@@ -2,7 +2,6 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
@@ -15,7 +14,12 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Link from "../Link";
-import { Stack } from "@mui/material";
+import { Avatar, Menu, Stack } from "@mui/material";
+import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import SettingsIcon from "@mui/icons-material/Settings";
+import Tooltip from "@mui/material/Tooltip";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const drawerWidth = 240;
 const navItems = [
@@ -26,9 +30,25 @@ const navItems = [
 ];
 
 function DrawerAppBar(props) {
+  const router = useRouter;
+  const { data: session, status } = useSession({
+    required: true,
+    onUnauthenticated: () => {
+      return;
+    },
+  });
+  console.log(session);
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
+  const handleClose = (event) => {
+    setAnchorEl(null);
+  };
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -69,10 +89,20 @@ function DrawerAppBar(props) {
           </IconButton>
           <Typography
             variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            component={Link}
+            href="/"
+            sx={{
+              flexGrow: 1,
+              display: {
+                xs: "none",
+                sm: "block",
+                textDecoration: "none",
+                fontWeight: 600,
+                fontSize: 30,
+              },
+            }}
           >
-            MUI
+            LOGO
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
@@ -92,18 +122,108 @@ function DrawerAppBar(props) {
               },
             }}
           >
-            <Button
-              sx={{ color: "black", mx: 2 }}
-              component={Link}
-              href="login"
-            >
-              Login
-            </Button>
-            <Button variant="contained" component={Link} href="#">
-              Register
-            </Button>
+            {session === null ? (
+              <>
+                <Button
+                  sx={{ mx: 2 }}
+                  component={Link}
+                  variant="outlined"
+                  href="login"
+                >
+                  Login
+                </Button>
+                <Button variant="contained" component={Link} href="/register">
+                  Register
+                </Button>
+              </>
+            ) : (
+              <Tooltip
+                disableFocusListener
+                disableTouchListener
+                title="Settings"
+              >
+                <IconButton
+                  onClick={handleClick}
+                  aria-controls={open ? "account-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                >
+                  <Avatar>
+                    {session && session.user.email[0].toUpperCase()}
+                  </Avatar>
+                </IconButton>
+              </Tooltip>
+            )}
           </Stack>
         </Toolbar>
+        <Menu
+          anchorEl={anchorEl}
+          id="account-menu"
+          open={open}
+          onClose={handleClose}
+          onClick={handleClose}
+          PaperProps={{
+            elevation: 0,
+            sx: {
+              p: 2,
+              minWidth: 270,
+              overflow: "visible",
+              borderRadius: 2,
+              filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+              // "& .MuiAvatar-root": {
+              //   width: 32,
+              //   height: 32,
+              //   ml: -0.5,
+              //   mr: 1,
+              // },
+              // "&:before": {
+              //   content: '""',
+              //   display: "block",
+              //   position: "absolute",
+              //   top: 0,
+              //   right: 14,
+              //   width: 10,
+              //   height: 10,
+              //   bgcolor: "background.paper",
+              //   transform: "translateY(-50%) rotate(45deg)",
+              //   zIndex: 0,
+              // },
+            },
+          }}
+          transformOrigin={{ horizontal: "right", vertical: "top" }}
+          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+        >
+          <Stack
+            flexDirection={"column"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            width={"100%"}
+          >
+            <IconButton sx={{ bgcolor: "#00000009" }}>
+              <Avatar sx={{ height: 70, width: 70 }}>
+                {session && session.user.email[0].toUpperCase()}
+              </Avatar>
+            </IconButton>
+            <Typography variant="subtitle2" mt={1}>
+              {session && session.user.email}
+            </Typography>
+            <Typography variant="caption">
+              {session && session.user.fullname}
+            </Typography>
+          </Stack>
+          <Button fullWidth startIcon={<SettingsIcon />}>
+            Settings
+          </Button>
+          <Button
+            fullWidth
+            variant="contained"
+            startIcon={<LogoutIcon />}
+            sx={{ mt: 2 }}
+            onClick={() => signOut()}
+          >
+            Logout
+          </Button>
+        </Menu>
       </AppBar>
       <Box component="nav">
         <Drawer
