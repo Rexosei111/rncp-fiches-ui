@@ -6,6 +6,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider } from "@emotion/react";
 import theme from "../theme";
 import createEmotionCache from "../createEmotionCache";
+import { SessionProvider } from "next-auth/react";
+
 // import "../styles/globals.css";
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -27,7 +29,9 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        {getLayout(<Component {...pageProps} />)}
+        <SessionProvider session={session}>
+          {getLayout(<Component {...pageProps} />)}
+        </SessionProvider>
       </ThemeProvider>
     </CacheProvider>
   );

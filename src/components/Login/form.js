@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Alert,
   Button,
@@ -18,6 +18,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import LoadingButton from "@mui/lab/LoadingButton";
 import LoginIcon from "@mui/icons-material/Login";
 import Link from "@/components/Link";
+import { useRouter } from "next/router";
+import { signIn } from "next-auth/react";
 
 const loginSchema = yup
   .object({
@@ -28,7 +30,11 @@ const loginSchema = yup
 
 export default function Form() {
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {
+  const [loading, setLoading] = React.useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const router = useRouter();
+  const handleOpen = (message) => {
+    setErrorMessage(message);
     setOpen(true);
   };
 
@@ -48,8 +54,20 @@ export default function Form() {
   });
 
   const onSubmit = async (data) => {
-    console.log(data);
-    handleOpen();
+    setLoading(true);
+    const result = await signIn("credentials", {
+      redirect: false,
+      ...data,
+      callbackUrl: "/",
+    });
+    setLoading(false);
+    if (!result.ok) {
+      console.log(result.error);
+      handleOpen("Invalid Credentials");
+    } else {
+      router.push("/");
+    }
+    return result;
   };
 
   return (
@@ -99,6 +117,7 @@ export default function Form() {
           />
           <LoadingButton
             loadingPosition="start"
+            loading={loading}
             startIcon={<LoginIcon />}
             variant="contained"
             type="submit"
@@ -118,7 +137,7 @@ export default function Form() {
         open={open}
         autoHideDuration={6000}
         onClose={handleClose}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       >
         <Alert
           onClose={handleClose}
@@ -126,7 +145,7 @@ export default function Form() {
           severity="error"
           sx={{ width: "100%" }}
         >
-          This is a success message!
+          {errorMessage}
         </Alert>
       </Snackbar>
     </Paper>
