@@ -12,7 +12,12 @@ export default function Register() {
       </Head>
       <Container
         maxWidth="lg"
-        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "89vh",
+        }}
       >
         <RegistrationForm />
       </Container>

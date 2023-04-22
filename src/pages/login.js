@@ -12,7 +12,13 @@ export default function Login() {
       </Head>
       <Container
         maxWidth="lg"
-        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          bgcolor: "transparent",
+          minHeight: "89vh",
+        }}
       >
         <Form />
       </Container>

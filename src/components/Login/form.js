@@ -65,7 +65,7 @@ export default function Form() {
       handleOpen("Invalid Credentials");
     } else {
       router.push(
-        router.query?.callbackUrl ? router.query.callbackUrl : "profile"
+        router.query?.callbackUrl ? router.query.callbackUrl : "/profile"
       );
     }
   };
