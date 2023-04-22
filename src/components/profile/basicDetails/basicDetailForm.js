@@ -19,15 +19,29 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import LoginIcon from "@mui/icons-material/Login";
 import Link from "@/components/Link";
 import { useRouter } from "next/router";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { PersonOutline } from "@mui/icons-material";
+import axios from "axios";
+import { useAuthToken, useProfile } from "@/components/utils";
+
 const loginSchema = yup
   .object({
-    email: yup.string().email().required(),
-    password: yup.string().required(),
+    email: yup.string().email(),
+    fullname: yup.string(),
   })
   .required();
 
-export default function Form() {
+export default function BasicDetailForm({ setEdit }) {
+  const {
+    data: session,
+    status,
+    update,
+  } = useSession({
+    required: true,
+    onUnauthenticated: () => {
+      router.push("login?callbackUrl=" + window.location.pathname);
+    },
+  });
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -50,34 +64,39 @@ export default function Form() {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(loginSchema),
+    defaultValues: {
+      email: session && session.user.email,
+      fullname: session && session.user.fullname,
+    },
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (update_data) => {
     setLoading(true);
-    const result = await signIn("credentials", {
-      redirect: false,
-      ...data,
-      callbackUrl: "/",
-    });
+    const { data, error } = await axios.patch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}auth/users/me`,
+      update_data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.user.access_token}`,
+        },
+      }
+    );
+    console.log(data);
+    update(data);
+    update();
     setLoading(false);
-    if (!result.ok) {
-      console.log(result.error);
-      handleOpen("Invalid Credentials");
-    } else {
-      router.push(
-        router.query?.callbackUrl ? router.query.callbackUrl : "profile"
-      );
+    setEdit();
+
+    if (error) {
+      console.log(error);
+      setLoading(false);
     }
   };
 
   return (
-    <Paper elevation={0} sx={{ width: { xs: "100%", md: 400 }, p: 4 }}>
-      <Typography variant="h3" textAlign={"center"}>
-        Welcome back
-      </Typography>
-      <Typography variant="subtitle1" my={2} textAlign="center">
-        Please log in with your credentials
-      </Typography>
+    // <Paper elevation={0} sx={{ width: { xs: "100%", md: 400 }, p: 4 }}>
+    <>
       <form method="POST" action="#" onSubmit={handleSubmit(onSubmit)}>
         <Stack flexDirection={"column"} gap={2}>
           <TextField
@@ -95,42 +114,35 @@ export default function Form() {
               ),
             }}
             fullWidth
-            focused
-            placeholder="example@provider.com"
+            // placeholder={user.email}
           />
           <TextField
-            {...register("password")}
+            {...register("fullname")}
             variant="outlined"
-            type={"password"}
-            label="Password"
-            error={errors.password ? true : false}
-            helperText={errors.password ? errors.password?.message : null}
+            type={"text"}
+            label="Full name"
+            error={errors.fullname ? true : false}
+            helperText={errors.fullname ? errors.fullname?.message : null}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <LockOutlinedIcon fontSize="small" />
+                  <PersonOutline fontSize="small" />
                 </InputAdornment>
               ),
             }}
-            focused
             fullWidth
+            // placeholder={user.fullname}
           />
           <LoadingButton
+            sx={{ ml: "auto" }}
             loadingPosition="start"
             loading={loading}
             startIcon={<LoginIcon />}
             variant="contained"
             type="submit"
           >
-            Login
+            save
           </LoadingButton>
-          <Link href="#" style={{ marginLeft: "auto", fontSize: 15 }}>
-            forgot your password?
-          </Link>
-          <Divider>or</Divider>
-          <Button component={Link} href="register">
-            Create an account
-          </Button>
         </Stack>
       </form>
       <Snackbar
@@ -148,6 +160,7 @@ export default function Form() {
           {errorMessage}
         </Alert>
       </Snackbar>
-    </Paper>
+    </>
+    // </Paper>
   );
 }
