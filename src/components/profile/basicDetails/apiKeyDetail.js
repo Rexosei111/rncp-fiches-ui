@@ -23,10 +23,12 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function APIKeyDetails() {
   const [hide, setHide] = useState(true);
   const [open, setOpen] = React.useState(false);
+  const router = useRouter();
 
   const handleTooltipClose = () => {
     setOpen(false);
