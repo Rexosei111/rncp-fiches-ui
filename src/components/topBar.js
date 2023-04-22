@@ -20,6 +20,8 @@ import { useRouter } from "next/router";
 import SettingsIcon from "@mui/icons-material/Settings";
 import Tooltip from "@mui/material/Tooltip";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { Person } from "@mui/icons-material";
+import { useAuthToken, useProfile } from "../utils";
 
 const drawerWidth = 240;
 const navItems = [
@@ -30,14 +32,13 @@ const navItems = [
 ];
 
 function DrawerAppBar(props) {
-  const router = useRouter;
+  const router = useRouter();
   const { data: session, status } = useSession({
     required: true,
     onUnauthenticated: () => {
       return;
     },
   });
-  console.log(session);
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -51,6 +52,12 @@ function DrawerAppBar(props) {
   };
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
+  };
+
+  const handleLogout = () => {
+    removeToken();
+    removeProfile();
+    router.reload();
   };
 
   const drawer = (
@@ -122,7 +129,7 @@ function DrawerAppBar(props) {
               },
             }}
           >
-            {session === null ? (
+            {!session ? (
               <>
                 <Button
                   sx={{ mx: 2 }}
@@ -199,20 +206,29 @@ function DrawerAppBar(props) {
             justifyContent={"center"}
             width={"100%"}
           >
-            <IconButton sx={{ bgcolor: "#00000009" }}>
+            <IconButton
+              sx={{ bgcolor: "#00000009" }}
+              component={Link}
+              href="profile"
+            >
               <Avatar sx={{ height: 70, width: 70 }}>
                 {session && session.user.email[0].toUpperCase()}
               </Avatar>
             </IconButton>
             <Typography variant="subtitle2" mt={1}>
-              {session && session.user.email}
+              {session && session.user?.email}
             </Typography>
             <Typography variant="caption">
-              {session && session.user.fullname}
+              {session && session.user?.fullname}
             </Typography>
           </Stack>
-          <Button fullWidth startIcon={<SettingsIcon />}>
-            Settings
+          <Button
+            fullWidth
+            startIcon={<Person />}
+            component={Link}
+            href="profile"
+          >
+            Profile
           </Button>
           <Button
             fullWidth
