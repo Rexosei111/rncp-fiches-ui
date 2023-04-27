@@ -28,7 +28,7 @@ export default function BasicDetailsList() {
   const { data: session, status } = useSession({
     required: true,
     onUnauthenticated: () => {
-      router.push("login?callbackUrl=" + window.location.pathname);
+      router.push("/login?callbackUrl=" + window.location.pathname);
     },
   });
   const details = [

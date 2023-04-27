@@ -39,7 +39,7 @@ export default function BasicDetailForm({ setEdit }) {
   } = useSession({
     required: true,
     onUnauthenticated: () => {
-      router.push("login?callbackUrl=" + window.location.pathname);
+      router.push("/login?callbackUrl=" + window.location.pathname);
     },
   });
   const [open, setOpen] = React.useState(false);

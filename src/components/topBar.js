@@ -62,8 +62,14 @@ function DrawerAppBar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+      <Typography
+        variant="h5"
+        sx={{ my: 2, textDecoration: "none", fontSize: 40 }}
+        component={Link}
+        href="/"
+        fontWeight={600}
+      >
+        LOGO
       </Typography>
       <Divider />
       <List>
@@ -81,6 +87,35 @@ function DrawerAppBar(props) {
           </ListItem>
         ))}
       </List>
+      {!session ? (
+        <>
+          <Button
+            sx={{ mx: 2 }}
+            component={Link}
+            variant="outlined"
+            href="/login"
+          >
+            Login
+          </Button>
+          <Button variant="contained" component={Link} href="/register">
+            Register
+          </Button>
+        </>
+      ) : (
+        <Stack flexDirection={"column"} alignItems={"center"}>
+          <Button startIcon={<Person />} component={Link} href="/profile">
+            Profile
+          </Button>
+          <Button
+            variant="contained"
+            startIcon={<LogoutIcon />}
+            sx={{ mt: 2 }}
+            onClick={() => signOut()}
+          >
+            Logout
+          </Button>
+        </Stack>
+      )}
     </Box>
   );
 
@@ -89,7 +124,12 @@ function DrawerAppBar(props) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" elevation={0} color="transparent">
+      <AppBar
+        component="nav"
+        elevation={0}
+        color="transparent"
+        position="sticky"
+      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -103,12 +143,11 @@ function DrawerAppBar(props) {
           <Typography
             variant="h6"
             component={Link}
+            textAlign={{ xs: "right", sm: "left" }}
             href="/"
             sx={{
               flexGrow: 1,
               display: {
-                xs: "none",
-                sm: "block",
                 textDecoration: "none",
                 fontWeight: 600,
                 fontSize: 30,
@@ -117,18 +156,13 @@ function DrawerAppBar(props) {
           >
             LOGO
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Box sx={{ display: { xs: "none", sm: "block" }, mr: 2 }}>
             {navItems.map((item) => (
               <Button key={item.name} component={Link} href={item.url}>
                 {item.name}
               </Button>
             ))}
           </Box>
-          <Divider
-            orientation="vertical"
-            variant="fullwidth"
-            sx={{ color: "red", mx: 2 }}
-          />
           <Stack
             sx={{
               display: {
@@ -143,7 +177,7 @@ function DrawerAppBar(props) {
                   sx={{ mx: 2 }}
                   component={Link}
                   variant="outlined"
-                  href="login"
+                  href="/login"
                 >
                   Login
                 </Button>
@@ -217,7 +251,7 @@ function DrawerAppBar(props) {
             <IconButton
               sx={{ bgcolor: "#00000009" }}
               component={Link}
-              href="profile"
+              href="/profile"
             >
               <Avatar sx={{ height: 70, width: 70 }}>
                 {session && session.user.email[0].toUpperCase()}
@@ -234,7 +268,7 @@ function DrawerAppBar(props) {
             fullWidth
             startIcon={<Person />}
             component={Link}
-            href="profile"
+            href="/profile"
           >
             Profile
           </Button>

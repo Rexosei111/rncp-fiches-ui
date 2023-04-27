@@ -24,7 +24,7 @@ export default function Profile() {
   const { data: session, status } = useSession({
     required: true,
     onUnauthenticated: () => {
-      router.push("login?callbackUrl=" + window.location.pathname);
+      router.push("/login?callbackUrl=" + window.location.pathname);
     },
   });
 
