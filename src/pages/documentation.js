@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Layout from "../components/layout";
 import Iframe from "react-iframe";
-import { Box } from "@mui/material";
+import { Box, Paper } from "@mui/material";
 import Head from "next/head";
 
 export default function APIDocs() {
@@ -10,7 +10,7 @@ export default function APIDocs() {
       <Head>
         <title>API Documentation</title>
       </Head>
-      <Box width={"100%"} py={-5}>
+      <Box width={"100%"} height={"89.8vh"}>
         <Iframe
           frameBorder={0}
           allowFullScreen

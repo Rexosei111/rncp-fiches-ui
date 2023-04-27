@@ -83,7 +83,6 @@ export default function BasicDetailForm({ setEdit }) {
       }
     );
     update(data);
-    update();
     setLoading(false);
     setEdit();
 
@@ -96,7 +95,6 @@ export default function BasicDetailForm({ setEdit }) {
   };
 
   return (
-    // <Paper elevation={0} sx={{ width: { xs: "100%", md: 400 }, p: 4 }}>
     <>
       <form method="POST" action="#" onSubmit={handleSubmit(onSubmit)}>
         <Stack flexDirection={"column"} gap={2}>
