@@ -11,7 +11,13 @@ export default function Index() {
       <Head>
         <title>RNCP Fiches | Search</title>
       </Head>
-      <Container maxWidth="md" sx={{ bgcolor: "transparent" }}>
+      <Container
+        maxWidth="md"
+        sx={{
+          bgcolor: "transparent",
+          minHeight: "89vh",
+        }}
+      >
         <Typography
           variant="h3"
           my={2}
