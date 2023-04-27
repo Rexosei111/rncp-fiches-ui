@@ -1,8 +1,11 @@
 import { Box, Paper, Stack, Typography } from "@mui/material";
 import React from "react";
 import DrawerAppBar from "./topBar";
+import { useRouter } from "next/router";
 
 export default function Layout({ children }) {
+  const router = useRouter();
+  const path = router.pathname;
   return (
     <Stack
       flexDirection={"column"}

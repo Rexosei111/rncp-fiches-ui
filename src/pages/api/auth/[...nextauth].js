@@ -94,7 +94,6 @@ export const authOptions = {
   ],
   callbacks: {
     async jwt({ token, trigger, session, user, account, profile }) {
-      console.log(user);
       if (trigger === "update" && token.user !== user) {
         token.user = { ...token.user, ...session };
         return token;

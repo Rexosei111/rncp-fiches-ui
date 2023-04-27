@@ -21,7 +21,7 @@ import Link from "@/components/Link";
 import { useRouter } from "next/router";
 import { signIn, useSession } from "next-auth/react";
 import { PersonOutline } from "@mui/icons-material";
-import axios from "axios";
+import axios, { isAxiosError } from "axios";
 import { useAuthToken, useProfile } from "@/components/utils";
 
 const loginSchema = yup
@@ -82,15 +82,16 @@ export default function BasicDetailForm({ setEdit }) {
         },
       }
     );
-    console.log(data);
     update(data);
     update();
     setLoading(false);
     setEdit();
 
     if (error) {
-      console.log(error);
       setLoading(false);
+      if (isAxiosError(error) && error.status === 401) {
+        router.push("/login?callbackUrl=" + window.location.pathname);
+      }
     }
   };
 

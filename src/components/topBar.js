@@ -26,7 +26,7 @@ import { useAuthToken, useProfile } from "../utils";
 const drawerWidth = 240;
 const navItems = [
   { name: "Rechercher", url: "#" },
-  { name: "API", url: "#" },
+  { name: "API", url: "/documentation" },
   { name: "Export", url: "#" },
   { name: "Nous contacter", url: "#" },
 ];
@@ -70,7 +70,13 @@ function DrawerAppBar(props) {
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item.name} />
+              <ListItemText
+                primary={item.name}
+                primaryTypographyProps={{
+                  component: Link,
+                  href: item.url,
+                }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -113,7 +119,9 @@ function DrawerAppBar(props) {
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item.name}>{item.name}</Button>
+              <Button key={item.name} component={Link} href={item.url}>
+                {item.name}
+              </Button>
             ))}
           </Box>
           <Divider
