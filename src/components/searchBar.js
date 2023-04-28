@@ -22,7 +22,7 @@ export default function SearchBar() {
   const handleChange = debounce(async (event) => {
     try {
       const { data } = await axios.get(
-        `${base_url}fiches/search?q=${event.target.value}`,
+        `${base_url}private/api/fiches/search?q=${event.target.value}`,
         {
           headers: {
             "Content-Type": "application/json",
