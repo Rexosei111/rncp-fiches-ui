@@ -33,7 +33,8 @@ export default function Infos({ fiche }) {
                 <Typography
                   variant="caption"
                   fontSize={15}
-                  fontWeight={500}
+                  fontWeight={400}
+                  width={"18%"}
                   color={"#5A606F"}
                 >
                   Codes NSF :
@@ -61,7 +62,8 @@ export default function Infos({ fiche }) {
                 <Typography
                   variant="caption"
                   fontSize={15}
-                  fontWeight={500}
+                  width={"18%"}
+                  fontWeight={400}
                   color={"#5A606F"}
                 >
                   Formacode :
@@ -88,8 +90,9 @@ export default function Infos({ fiche }) {
               <Stack flexDirection={"row"} alignItems={"center"} gap={2}>
                 <Typography
                   variant="caption"
+                  width={"35%"}
                   fontSize={15}
-                  fontWeight={500}
+                  fontWeight={400}
                   color={"#5A606F"}
                 >
                   Niveau de qualification :
@@ -110,8 +113,9 @@ export default function Infos({ fiche }) {
             <Stack flexDirection={"row"} alignItems={"center"} gap={2}>
               <Typography
                 variant="caption"
+                width={"60%"}
                 fontSize={15}
-                fontWeight={500}
+                fontWeight={400}
                 color={"#5A606F"}
               >
                 Inscrite au cadre de Nouvelle Calédonie :
@@ -149,7 +153,8 @@ export default function Infos({ fiche }) {
               <Typography
                 variant="caption"
                 fontSize={15}
-                fontWeight={500}
+                width={"60%"}
+                fontWeight={400}
                 color={"#5A606F"}
               >
                 Inscrite au cadre de la Polynésie Française :

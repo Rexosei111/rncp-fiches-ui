@@ -50,6 +50,7 @@ export default function Indexes() {
               primary={item}
               primaryTypographyProps={{
                 fontFamily: popins.style.fontFamily,
+                fontSize: 14,
               }}
             />
           </ListItem>
@@ -69,6 +70,7 @@ export default function Indexes() {
               primary={item}
               primaryTypographyProps={{
                 fontFamily: popins.style.fontFamily,
+                fontSize: 14,
               }}
             />
           </ListItem>
