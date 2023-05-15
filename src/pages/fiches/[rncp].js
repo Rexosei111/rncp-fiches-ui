@@ -18,6 +18,13 @@ import BlocDate from "@/components/components/blocDate";
 import CardWrapper from "@/components/components/details/cardWrapper";
 import Indexes from "@/components/components/details/indexes";
 import Infos from "@/components/components/details/infos";
+import Link from "next/link";
+import { Lato } from "next/font/google";
+
+const LatoStyle = Lato({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "700"],
+});
 
 export default function FicheDetails() {
   const router = useRouter();
@@ -83,9 +90,10 @@ export default function FicheDetails() {
               >
                 <Typography
                   variant="h1"
-                  fontSize={28}
-                  fontWeight={500}
+                  fontSize={30}
+                  fontWeight={600}
                   textAlign={"center"}
+                  fontFamily={LatoStyle.style.fontFamily}
                   gutterBottom
                 >
                   {rncpData?.intitule}
@@ -131,6 +139,8 @@ export default function FicheDetails() {
                       variant="caption"
                       fontSize={14}
                       color={"#5A606F"}
+                      component={Link}
+                      href={"/fiches/" + rncpData?.ancienne_certification}
                     >
                       Certification antérieure :{" "}
                       {rncpData?.ancienne_certification}
@@ -141,6 +151,8 @@ export default function FicheDetails() {
                       variant="caption"
                       fontSize={14}
                       color={"#5A606F"}
+                      component={Link}
+                      href={"/fiches/" + rncpData?.nouvelle_certification}
                     >
                       Remplacée par : {rncpData?.nouvelle_certification}
                     </Typography>
@@ -158,12 +170,16 @@ export default function FicheDetails() {
               </Stack>
             </Stack>
           </Stack>
-          <Stack gap={3} flexDirection={"row"} my={2}>
+          <Stack
+            gap={5}
+            flexDirection={"row"}
+            my={2}
+            flexWrap={{ xs: "wrap", md: "nowrap" }}
+          >
             <CardWrapper title={"Index"}>
               <Indexes />
             </CardWrapper>
             <CardWrapper title={"Informations de référence"}>
-              {/* <Indexes /> */}
               <Infos fiche={rncpData} />
             </CardWrapper>
           </Stack>

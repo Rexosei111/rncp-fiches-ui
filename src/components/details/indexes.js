@@ -37,7 +37,7 @@ export default function Indexes() {
       gap={2}
     >
       <List disablePadding>
-        {indexes.slice(0, 5).map((item, index) => (
+        {indexes.slice(0, 6).map((item, index) => (
           <ListItem key={index} disableGutters disablePadding>
             <ListItemIcon>
               <CircleIcon
@@ -50,14 +50,14 @@ export default function Indexes() {
               primary={item}
               primaryTypographyProps={{
                 fontFamily: popins.style.fontFamily,
-                fontSize: 14,
+                fontSize: 15,
               }}
             />
           </ListItem>
         ))}
       </List>
       <List disablePadding>
-        {indexes.slice(5).map((item, index) => (
+        {indexes.slice(6).map((item, index) => (
           <ListItem key={index} disableGutters disablePadding>
             <ListItemIcon>
               <CircleIcon
@@ -70,7 +70,7 @@ export default function Indexes() {
               primary={item}
               primaryTypographyProps={{
                 fontFamily: popins.style.fontFamily,
-                fontSize: 14,
+                fontSize: 15,
               }}
             />
           </ListItem>

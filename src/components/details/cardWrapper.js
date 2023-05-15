@@ -24,7 +24,7 @@ export default function CardWrapper({ children, title }) {
       elevation={24}
       sx={{
         p: 3,
-        width: "50%",
+        width: { xs: "100%", md: "50%" },
         borderRadius: 2,
       }}
     >
@@ -35,12 +35,15 @@ export default function CardWrapper({ children, title }) {
           fontWeight={700}
           fontFamily={popins.style.fontFamily}
           gutterBottom
+          sx={{
+            textShadow: "0px 4px 5px rgba(0, 0, 0, 0.25)",
+          }}
         >
           {title}
         </Typography>
         <Divider
           variant="fullWidth"
-          sx={{ height: 5, bgcolor: "#FF8300", width: "20%" }}
+          sx={{ height: 4, bgcolor: "#FF8300", width: "20%" }}
         />
       </Box>
       {children}

@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { Inter, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
 
@@ -22,6 +22,9 @@ export default function Infos({ fiche }) {
     <Box
       width={"100%"}
       maxHeight={300}
+      sx={{
+        overflowY: "auto",
+      }}
       mt={1}
       fontFamily={popins.style.fontFamily}
     >
@@ -29,7 +32,7 @@ export default function Infos({ fiche }) {
         {fiche.fiches_codes_nsf && (
           <ListItem disablePadding disableGutters>
             <ListItemText>
-              <Stack flexDirection={"row"} alignItems={"center"} gap={2}>
+              <Stack flexDirection={"row"} alignItems={"flex-start"} gap={2}>
                 <Typography
                   variant="caption"
                   fontSize={15}
@@ -39,7 +42,7 @@ export default function Infos({ fiche }) {
                 >
                   Codes NSF :
                 </Typography>
-                <Breadcrumbs separator="-">
+                <Breadcrumbs separator="-" sx={{ width: "80%" }}>
                   {fiche.fiches_codes_nsf.map((code_nsf, key) => (
                     <Typography
                       key={key}
@@ -58,7 +61,7 @@ export default function Infos({ fiche }) {
         {fiche.fiches_formacodes && (
           <ListItem disablePadding disableGutters>
             <ListItemText>
-              <Stack flexDirection={"row"} alignItems={"center"} gap={2}>
+              <Stack flexDirection={"row"} alignItems={"flex-start"} gap={2}>
                 <Typography
                   variant="caption"
                   fontSize={15}
@@ -68,7 +71,7 @@ export default function Infos({ fiche }) {
                 >
                   Formacode :
                 </Typography>
-                <Breadcrumbs separator="-">
+                <Breadcrumbs separator="-" sx={{ width: "80%" }}>
                   {fiche.fiches_formacodes.map((codes, key) => (
                     <Typography
                       key={key}
@@ -87,7 +90,7 @@ export default function Infos({ fiche }) {
         {fiche.nomenclature_europe_intitule && (
           <ListItem disablePadding>
             <ListItemText>
-              <Stack flexDirection={"row"} alignItems={"center"} gap={2}>
+              <Stack flexDirection={"row"} alignItems={"flex-start"} gap={2}>
                 <Typography
                   variant="caption"
                   width={"35%"}
@@ -110,7 +113,7 @@ export default function Infos({ fiche }) {
         )}
         <ListItem disablePadding>
           <ListItemText>
-            <Stack flexDirection={"row"} alignItems={"center"} gap={2}>
+            <Stack flexDirection={"row"} alignItems={"flex-start"} gap={2}>
               <Typography
                 variant="caption"
                 width={"60%"}
@@ -149,7 +152,7 @@ export default function Infos({ fiche }) {
         </ListItem>
         <ListItem disablePadding>
           <ListItemText>
-            <Stack flexDirection={"row"} alignItems={"center"} gap={2}>
+            <Stack flexDirection={"row"} alignItems={"flex-start"} gap={2}>
               <Typography
                 variant="caption"
                 fontSize={15}
