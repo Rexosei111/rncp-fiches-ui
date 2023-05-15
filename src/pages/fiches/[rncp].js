@@ -4,6 +4,9 @@ import {
   Box,
   Breadcrumbs,
   Container,
+  List,
+  ListItem,
+  ListItemText,
   Paper,
   Stack,
   Typography,
@@ -14,11 +17,13 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
+import BlocDate from "@/components/components/blocDate";
 
 export default function FicheDetails() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [rncpData, setRncpData] = useState({});
+  const [blocDate, setBlocDate] = useState({});
   const { rncp } = router.query;
   useEffect(() => {
     async function fetchRncp() {
@@ -36,6 +41,18 @@ export default function FicheDetails() {
     }
     fetchRncp();
   }, [rncp]);
+
+  useEffect(() => {
+    setBlocDate({
+      date_dernier_jo: rncpData?.date_dernier_jo,
+      date_decision: rncpData?.date_decision,
+      date_effet: rncpData?.date_effet,
+      date_publication: rncpData?.date_publication,
+      duree_enregistrement: rncpData?.duree_enregistrement,
+      date_fin_enregistrement: rncpData?.date_fin_enregistrement,
+      date_limite_delivrance: rncpData?.date_limite_delivrance,
+    });
+  }, [rncpData]);
   return (
     <>
       <Head>
@@ -52,13 +69,15 @@ export default function FicheDetails() {
             <Stack
               component={Paper}
               flexDirection={"row"}
+              justifyContent={"space-between"}
               gap={5}
               p={3}
               elevation={10}
-              sx={{ minHeight: 300, width: "100%", borderRadius: 3 }}
+              width={"100%"}
+              sx={{ minHeight: 300, borderRadius: 3 }}
             >
               <Stack
-                width={"100%"}
+                // width={"50%"}
                 flexDirection={"column"}
                 justifyContent={"center"}
               >
@@ -128,7 +147,9 @@ export default function FicheDetails() {
                   )}
                 </Stack>
               </Stack>
-              <Stack width={"100%"}></Stack>
+              <Stack>
+                <BlocDate data={blocDate} />
+              </Stack>
             </Stack>
           </Stack>
         </Container>
