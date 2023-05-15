@@ -186,6 +186,7 @@ export default function RegistrationForm() {
             startIcon={<LoginIcon />}
             variant="contained"
             type="submit"
+            sx={{ textTransform: "capitalize", color: "white" }}
           >
             Sign up
           </LoadingButton>

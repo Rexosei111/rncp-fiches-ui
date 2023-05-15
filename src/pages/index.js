@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import Layout from "../components/layout";
 import SearchBar from "../components/searchBar";
 import Head from "next/head";
+import { Stack } from "@mui/material";
 
 export default function Index() {
   return (
@@ -11,24 +12,26 @@ export default function Index() {
       <Head>
         <title>RNCP Fiches | Search</title>
       </Head>
-      <Container maxWidth="md" sx={{ bgcolor: "transparent" }}>
+      <Container
+        maxWidth="md"
+        gap={2}
+        sx={{
+          bgcolor: "transparent",
+          minHeight: "77vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Typography
-          variant="h3"
+          variant="h4"
           my={2}
-          textAlign={{ xs: "center", lg: "left" }}
-          width={{ xs: "100%", lg: "70%" }}
+          textAlign={{ xs: "center" }}
+          width={{ xs: "100%", lg: "100%" }}
           fontWeight={700}
         >
-          Qui ex elit aliquip mollit nulla eiusmod.
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          textAlign={{ xs: "center", lg: "left" }}
-          color={"GrayText"}
-          width={{ xs: "100%", lg: "70%" }}
-        >
-          Deserunt do velit eiusmod commodo id id aute ullamco aliqua elit duis
-          excepteur irure incididunt. Dolore laboris do non eu ad.
+          Toute la data de l’enseignement et de la formation professionnelle
         </Typography>
         <SearchBar />
       </Container>

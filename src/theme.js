@@ -12,21 +12,24 @@ export const roboto = Roboto({
 
 // Create a theme instance.
 const theme = createTheme({
-  // palette: {
-  //   primary: {
-  //     main: "#171A20",
-  //   },
-  //   secondary: {
-  //     main: "#FFC107",
-  //   },
-  //   error: {
-  //     main: red.A400,
-  //   },
-  // },
-  // text: {
-  //   primary: "#171A20",
-  //   secondary: "#F8FAFC",
-  // },
+  palette: {
+    mode: "light",
+    primary: {
+      main: "#FF8300",
+      dark: null,
+    },
+    secondary: {
+      main: "#000000",
+    },
+    //   error: {
+    //     main: red.A400,
+    //   },
+    // },
+    // text: {
+    //   primary: "#171A20",
+    //   secondary: "#F8FAFC",
+    // },
+  },
   typography: {
     fontFamily: roboto.style.fontFamily,
   },
