@@ -4,9 +4,6 @@ import {
   Box,
   Breadcrumbs,
   Container,
-  List,
-  ListItem,
-  ListItemText,
   Paper,
   Stack,
   Typography,
@@ -19,6 +16,8 @@ import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
 import BlocDate from "@/components/components/blocDate";
 import CardWrapper from "@/components/components/details/cardWrapper";
+import Indexes from "@/components/components/details/indexes";
+import Infos from "@/components/components/details/infos";
 
 export default function FicheDetails() {
   const router = useRouter();
@@ -61,12 +60,11 @@ export default function FicheDetails() {
       </Head>
       {loading && <DetailSkeleton />}
       {!loading && (
-        <Container maxWidth={"lg"} sx={{ minHeight: "79vh" }}>
+        <Container maxWidth={"lg"} sx={{ minHeight: "79vh", py: 2 }}>
           <Stack
             alignItems={"center"}
             justifyContent={"center"}
             minHeight={350}
-            bgcolor={"gray"}
           >
             <Stack
               component={Paper}
@@ -160,8 +158,14 @@ export default function FicheDetails() {
               </Stack>
             </Stack>
           </Stack>
-          <Stack gap={3}>
-            <CardWrapper title={"Index"}></CardWrapper>
+          <Stack gap={3} flexDirection={"row"} my={2}>
+            <CardWrapper title={"Index"}>
+              <Indexes />
+            </CardWrapper>
+            <CardWrapper title={"Informations de référence"}>
+              {/* <Indexes /> */}
+              <Infos fiche={rncpData} />
+            </CardWrapper>
           </Stack>
         </Container>
       )}
