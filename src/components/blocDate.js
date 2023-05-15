@@ -6,51 +6,150 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { transformDate } from "../utils";
+import { removeNullValues } from "../utils";
+import { Typography } from "@mui/material";
 
 export default function BlocDate({ data }) {
-  console.log(data);
-
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
-
-  const rows = [
-    createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-    createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-    createData("Eclair", 262, 16.0, 24, 6.0),
-    createData("Cupcake", 305, 3.7, 67, 4.3),
-    createData("Gingerbread", 356, 16.0, 49, 3.9),
-  ];
+  const transformedData = removeNullValues(data);
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell sx={{ border: "none" }}>
-              Dessert (100g serving)
-            </TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
+    <TableContainer component={Paper} elevation={0} sx={{ maxWidth: "80%" }}>
+      <Table aria-label="simple table" size="small">
         <TableBody>
-          {rows.map((row) => (
+          {transformedData?.date_dernier_jo && (
             <TableRow
-              key={row.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
-                {row.name}
+              <TableCell
+                component="th"
+                scope="row"
+                sx={{ border: "none" }}
+                align="left"
+              >
+                <Typography variant="caption" fontSize={15} color={"#5A606F"}>
+                  Date du JO/BO:
+                </Typography>
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="left" sx={{ border: "none" }}>
+                {transformDate(transformedData?.date_dernier_jo)}
+              </TableCell>
             </TableRow>
-          ))}
+          )}
+          {transformedData?.date_decision && (
+            <TableRow
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell
+                component="th"
+                scope="row"
+                align="left"
+                sx={{ border: "none" }}
+              >
+                <Typography variant="caption" fontSize={15} color={"#5A606F"}>
+                  Date de décision
+                </Typography>
+              </TableCell>
+              <TableCell align="left" sx={{ border: "none" }}>
+                {transformDate(transformedData?.date_decision)}
+              </TableCell>
+            </TableRow>
+          )}
+          {transformedData?.date_effet && (
+            <TableRow
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell
+                component="th"
+                scope="row"
+                align="left"
+                sx={{ border: "none" }}
+              >
+                <Typography variant="caption" fontSize={15} color={"#5A606F"}>
+                  Date d’effet:
+                </Typography>
+              </TableCell>
+              <TableCell align="left" sx={{ border: "none" }}>
+                {transformDate(transformedData?.date_effet)}
+              </TableCell>
+            </TableRow>
+          )}
+          {transformedData?.date_publication && (
+            <TableRow
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell
+                component="th"
+                scope="row"
+                align="left"
+                sx={{ border: "none" }}
+              >
+                <Typography variant="caption" fontSize={15} color={"#5A606F"}>
+                  Date de publication:
+                </Typography>
+              </TableCell>
+              <TableCell align="left" sx={{ border: "none" }}>
+                {transformDate(transformedData?.date_publication)}
+              </TableCell>
+            </TableRow>
+          )}
+          {transformedData?.duree_enregistrement && (
+            <TableRow
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell
+                component="th"
+                scope="row"
+                align="left"
+                sx={{ border: "none" }}
+              >
+                <Typography variant="caption" fontSize={15} color={"#5A606F"}>
+                  Durée d’enregistrement (années):
+                </Typography>
+              </TableCell>
+              <TableCell align="left" sx={{ border: "none", color: "#5A606F" }}>
+                {transformedData?.duree_enregistrement}
+              </TableCell>
+            </TableRow>
+          )}
+          {transformedData?.date_fin_enregistrement && (
+            <TableRow
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell
+                component="th"
+                scope="row"
+                align="left"
+                sx={{ border: "none" }}
+              >
+                <Typography variant="caption" fontSize={15} color={"#5A606F"}>
+                  Date de fin d’enregistrement:
+                </Typography>
+              </TableCell>
+              <TableCell align="left" sx={{ border: "none" }}>
+                {transformDate(transformedData?.date_fin_enregistrement)}
+              </TableCell>
+            </TableRow>
+          )}
+          {transformedData?.date_limite_delivrance && (
+            <TableRow
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell
+                component="th"
+                scope="row"
+                align="left"
+                sx={{ border: "none" }}
+              >
+                <Typography variant="caption" fontSize={15} color={"#5A606F"}>
+                  Date limite de délivrance:
+                </Typography>
+              </TableCell>
+              <TableCell align="left" sx={{ border: "none" }}>
+                {transformDate(transformedData?.date_limite_delivrance)}
+              </TableCell>
+            </TableRow>
+          )}
         </TableBody>
       </Table>
     </TableContainer>

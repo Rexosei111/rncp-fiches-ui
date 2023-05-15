@@ -65,6 +65,7 @@ export default function FicheDetails() {
             alignItems={"center"}
             justifyContent={"center"}
             minHeight={350}
+            bgcolor={"gray"}
           >
             <Stack
               component={Paper}
@@ -77,7 +78,7 @@ export default function FicheDetails() {
               sx={{ minHeight: 300, borderRadius: 3 }}
             >
               <Stack
-                // width={"50%"}
+                width={"50%"}
                 flexDirection={"column"}
                 justifyContent={"center"}
               >
@@ -102,11 +103,11 @@ export default function FicheDetails() {
                     </Typography>
                     <Stack flexDirection={"row"} alignItems={"center"} gap={1}>
                       <Typography
-                        color={rncpData?.Statut ? "#00C408" : "#F0000E"}
+                        color={rncpData?.statut ? "#00C408" : "#F0000E"}
                       >
-                        {rncpData.Statut ? "Fiche Active" : "Fiche Inactive"}{" "}
+                        {rncpData.statut ? "Fiche Active" : "Fiche Inactive"}{" "}
                       </Typography>
-                      {rncpData.Statut ? (
+                      {rncpData.statut ? (
                         <CheckCircleOutlineRoundedIcon
                           fontSize="small"
                           htmlColor="#00C408"
@@ -147,7 +148,13 @@ export default function FicheDetails() {
                   )}
                 </Stack>
               </Stack>
-              <Stack>
+              <Stack
+                width={"50%"}
+                p={2}
+                alignItems={"center"}
+                justifyContent={"center"}
+                flexDirection={"column"}
+              >
                 <BlocDate data={blocDate} />
               </Stack>
             </Stack>
