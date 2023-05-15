@@ -18,6 +18,7 @@ import React, { useEffect, useState } from "react";
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
 import BlocDate from "@/components/components/blocDate";
+import CardWrapper from "@/components/components/details/cardWrapper";
 
 export default function FicheDetails() {
   const router = useRouter();
@@ -158,6 +159,9 @@ export default function FicheDetails() {
                 <BlocDate data={blocDate} />
               </Stack>
             </Stack>
+          </Stack>
+          <Stack gap={3}>
+            <CardWrapper title={"Index"}></CardWrapper>
           </Stack>
         </Container>
       )}
