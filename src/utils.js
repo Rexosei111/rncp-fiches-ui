@@ -8,13 +8,13 @@ export const transformDate = (dateString) => {
   return formattedDate;
 };
 
-export function clipText(text, size = 5) {
+export function clipText(text, size) {
   if (typeof text === "undefined") {
     return null;
   }
   const words = text.split(" ");
   if (words.length > size) {
-    const clippedText = words.slice(0, 5).join(" ") + "...";
+    const clippedText = words.slice(0, size).join(" ") + "...";
     return clippedText;
   } else {
     return text;

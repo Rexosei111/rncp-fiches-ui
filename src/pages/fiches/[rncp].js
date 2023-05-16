@@ -52,6 +52,17 @@ export default function FicheDetails() {
     fetchRncp();
   }, [rncp]);
 
+  const calculateFontSize = (text) => {
+    const words = text.split(" ");
+    const textLength = words.length;
+    const baseFontSize = 25; // Set your base font size here
+    const maxFontSize = 35; // Set the maximum font size here
+
+    // Adjust the font size based on the length of the text
+    const fontSize = Math.max(baseFontSize, maxFontSize - textLength);
+
+    return fontSize;
+  };
   useEffect(() => {
     setBlocDate({
       date_dernier_jo: rncpData?.date_dernier_jo,
@@ -95,13 +106,16 @@ export default function FicheDetails() {
                 <Tooltip title={rncpData?.intitule}>
                   <Typography
                     variant="h1"
-                    fontSize={30}
+                    fontSize={
+                      rncpData?.intitule &&
+                      calculateFontSize(rncpData?.intitule)
+                    }
                     fontWeight={600}
                     textAlign={"center"}
                     fontFamily={LatoStyle.style.fontFamily}
                     gutterBottom
                   >
-                    {clipText(rncpData?.intitule, 6)}
+                    {clipText(rncpData?.intitule, 9)}
                   </Typography>
                 </Tooltip>
                 <Stack
