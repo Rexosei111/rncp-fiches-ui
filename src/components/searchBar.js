@@ -2,6 +2,7 @@ import {
   Autocomplete,
   Button,
   InputAdornment,
+  InputLabel,
   Paper,
   Stack,
   TextField,
@@ -51,6 +52,7 @@ export default function SearchBar() {
         }
       );
       setRncps(data);
+      setError(false);
     } catch (e) {
       console.log(e);
     }
@@ -78,49 +80,58 @@ export default function SearchBar() {
           method="GET"
           onSubmit={handleSubmit}
           action="#"
-          flexDirection={"row"}
+          flexDirection={"column"}
           // alignItems={"center"}
-          gap={0}
+          gap={1}
           sx={{ width: { xs: 270, sm: 320, md: 400, lg: 550 } }}
         >
-          <SearchField
-            {...params}
-            variant="outlined"
-            fullWidth
-            name="search"
-            onChange={handleChange}
-            sx={{
-              borderRadius: "6px 0px 0px 6px",
-              outlineColor: "red",
-              borderColor: "red",
-            }}
-            error={error}
-            helperText={error ? "This field should not be empty" : null}
-            placeholder="Rechercher par numéro RNCP, RS, OF..."
-            InputProps={{
-              ...params.InputProps,
-              type: "search",
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <Button
-            variant="contained"
-            type="submit"
-            color="primary"
-            disableElevation
-            sx={{
-              width: "20%",
-              borderRadius: "0px 6px 6px 0px",
-              color: "white",
-              textTransform: "capitalize",
-            }}
+          <Stack width={"100%"} flexDirection={"row"} gap={0}>
+            <SearchField
+              {...params}
+              variant="outlined"
+              fullWidth
+              name="search"
+              onChange={handleChange}
+              sx={{
+                borderRadius: "6px 0px 0px 6px",
+                outlineColor: "red",
+                borderColor: "red",
+              }}
+              error={error}
+              placeholder="Rechercher par numéro RNCP, RS, OF..."
+              InputProps={{
+                ...params.InputProps,
+                type: "search",
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <Button
+              variant="contained"
+              type="submit"
+              color="primary"
+              disableElevation
+              sx={{
+                width: "20%",
+                borderRadius: "0px 6px 6px 0px",
+                color: "white",
+                textTransform: "capitalize",
+              }}
+            >
+              Search
+            </Button>
+          </Stack>
+          <InputLabel
+            shrink
+            htmlFor="search"
+            sx={{ color: "red" }}
+            disabled={error ? false : true}
           >
-            Search
-          </Button>
+            {error ? "This field should not be empty" : null}
+          </InputLabel>
         </Stack>
       )}
     />
