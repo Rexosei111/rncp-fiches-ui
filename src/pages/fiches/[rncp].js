@@ -55,7 +55,7 @@ export default function FicheDetails() {
   const calculateFontSize = (text) => {
     const words = text.split(" ");
     const textLength = words.length;
-    const baseFontSize = 25; // Set your base font size here
+    const baseFontSize = 20; // Set your base font size here
     const maxFontSize = 35; // Set the maximum font size here
 
     // Adjust the font size based on the length of the text
@@ -115,7 +115,7 @@ export default function FicheDetails() {
                     fontFamily={LatoStyle.style.fontFamily}
                     gutterBottom
                   >
-                    {clipText(rncpData?.intitule, 9)}
+                    {(rncpData?.intitule, 9)}
                   </Typography>
                 </Tooltip>
                 <Stack
