@@ -92,7 +92,7 @@ export default function FicheDetails() {
               flexDirection={"row"}
               justifyContent={"space-between"}
               gap={{ xs: 1, md: 5 }}
-              p={3}
+              p={{ xs: 1, md: 3 }}
               elevation={10}
               width={"100%"}
               flexWrap={{ xs: "wrap", md: "nowrap" }}
