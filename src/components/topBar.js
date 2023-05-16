@@ -22,13 +22,14 @@ import Tooltip from "@mui/material/Tooltip";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Person } from "@mui/icons-material";
 import { useAuthToken, useProfile } from "../utils";
+import Logo from "./logo";
 
 const drawerWidth = 240;
 const navItems = [
-  { name: "Rechercher", url: "#" },
   { name: "API", url: "/documentation" },
   { name: "Export", url: "#" },
   { name: "Nous contacter", url: "#" },
+  { name: "Rechercher", url: "#" },
 ];
 
 function DrawerAppBar(props) {
@@ -62,15 +63,7 @@ function DrawerAppBar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography
-        variant="h5"
-        sx={{ my: 2, textDecoration: "none", fontSize: 40 }}
-        component={Link}
-        href="/"
-        fontWeight={600}
-      >
-        LOGO
-      </Typography>
+      <Logo />
       <Divider />
       <List>
         {navItems.map((item) => (
@@ -140,25 +133,21 @@ function DrawerAppBar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            component={Link}
-            textAlign={{ xs: "right", sm: "left" }}
-            href="/"
-            sx={{
-              flexGrow: 1,
-              display: {
-                textDecoration: "none",
-                fontWeight: 600,
-                fontSize: 30,
-              },
-            }}
-          >
-            LOGO
-          </Typography>
+          <Logo />
           <Box sx={{ display: { xs: "none", sm: "block" }, mr: 2 }}>
             {navItems.map((item) => (
-              <Button key={item.name} component={Link} href={item.url}>
+              <Button
+                key={item.name}
+                component={Link}
+                href={item.url}
+                disableRipple
+                disableFocusRipple
+                disableTouchRipple
+                sx={{
+                  color: "black",
+                  textTransform: "capitalize",
+                }}
+              >
                 {item.name}
               </Button>
             ))}
@@ -174,14 +163,20 @@ function DrawerAppBar(props) {
             {!session ? (
               <>
                 <Button
-                  sx={{ mx: 2 }}
+                  sx={{ mx: 2, textTransform: "capitalize" }}
                   component={Link}
                   variant="outlined"
                   href="/login"
                 >
                   Login
                 </Button>
-                <Button variant="contained" component={Link} href="/register">
+                <Button
+                  variant="contained"
+                  component={Link}
+                  href="/register"
+                  disableElevation
+                  sx={{ color: "white", textTransform: "capitalize" }}
+                >
                   Register
                 </Button>
               </>
@@ -198,7 +193,7 @@ function DrawerAppBar(props) {
                   aria-expanded={open ? "true" : undefined}
                 >
                   <Avatar>
-                    {session && session.user.email[0].toUpperCase()}
+                    {session && session.user?.email[0].toUpperCase()}
                   </Avatar>
                 </IconButton>
               </Tooltip>
@@ -254,7 +249,7 @@ function DrawerAppBar(props) {
               href="/profile"
             >
               <Avatar sx={{ height: 70, width: 70 }}>
-                {session && session.user.email[0].toUpperCase()}
+                {session && session.user?.email[0].toUpperCase()}
               </Avatar>
             </IconButton>
             <Typography variant="subtitle2" mt={1}>

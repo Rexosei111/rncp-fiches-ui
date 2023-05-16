@@ -121,6 +121,7 @@ export default function Form() {
             startIcon={<LoginIcon />}
             variant="contained"
             type="submit"
+            sx={{ textTransform: "capitalize", color: "white" }}
           >
             Login
           </LoadingButton>

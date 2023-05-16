@@ -5,6 +5,7 @@ import {
   Paper,
   Stack,
   TextField,
+  styled,
 } from "@mui/material";
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
@@ -12,6 +13,26 @@ import { debounce } from "lodash";
 import { useSWR } from "swr";
 import axios from "axios";
 import { useRouter } from "next/router";
+
+const SearchField = styled(TextField)({
+  "& label.Mui-focused": {
+    color: "#A0AAB4",
+  },
+  "& .MuiInput-underline:after": {
+    borderBottomColor: "#B2BAC2",
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderRadius: "6px 0px 0px 6px",
+    },
+    "&:hover fieldset": {
+      borderRadius: "6px 0px 0px 6px",
+    },
+    "&.Mui-focused fieldset": {
+      borderRadius: "6px 0px 0px 6px",
+    },
+  },
+});
 
 const base_url = process.env.NEXT_PUBLIC_API_BASE_URL;
 export default function SearchBar() {
@@ -22,7 +43,7 @@ export default function SearchBar() {
   const handleChange = debounce(async (event) => {
     try {
       const { data } = await axios.get(
-        `${base_url}private/api/fiches/search?q=${event.target.value}`,
+        `${base_url}api/v1/private/fiches/search?q=${event.target.value}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -50,23 +71,30 @@ export default function SearchBar() {
       options={rncps}
       filterOptions={(x) => x}
       renderInput={(params) => (
-        <Paper
-          sx={{ p: 1 }}
-          my={4}
-          elevation={20}
+        <Stack
+          elevation={0}
           component={"form"}
           method="GET"
           onSubmit={handleSubmit}
           action="#"
+          flexDirection={"row"}
+          // alignItems={"center"}
+          gap={0}
+          sx={{ width: { xs: 270, sm: 320, md: 400, lg: 550 } }}
         >
-          <TextField
+          <SearchField
             {...params}
             variant="outlined"
+            fullWidth
             name="search"
             onChange={handleChange}
-            focused
+            sx={{
+              borderRadius: "6px 0px 0px 6px",
+              outlineColor: "red",
+              borderColor: "red",
+            }}
             error={error}
-            placeholder="Search by RNCP"
+            placeholder="Rechercher par numéro RNCP, RS, OF..."
             InputProps={{
               ...params.InputProps,
               type: "search",
@@ -75,14 +103,23 @@ export default function SearchBar() {
                   <SearchIcon />
                 </InputAdornment>
               ),
-              endAdornment: (
-                <Button variant="contained" type="submit">
-                  Search
-                </Button>
-              ),
             }}
           />
-        </Paper>
+          <Button
+            variant="contained"
+            type="submit"
+            color="primary"
+            disableElevation
+            sx={{
+              width: "20%",
+              borderRadius: "0px 6px 6px 0px",
+              color: "white",
+              textTransform: "capitalize",
+            }}
+          >
+            Search
+          </Button>
+        </Stack>
       )}
     />
   );

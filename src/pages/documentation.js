@@ -10,7 +10,7 @@ export default function APIDocs() {
       <Head>
         <title>API Documentation</title>
       </Head>
-      <Box width={"100%"} height={"89.8vh"}>
+      <Box width={"100%"} minHeight={"92vh"} height={"92vh"}>
         <Iframe
           frameBorder={0}
           allowFullScreen
@@ -19,7 +19,7 @@ export default function APIDocs() {
           title="API Documentation"
           width="100%"
           height="100%"
-          url={`${process.env.NEXT_PUBLIC_API_BASE_URL}api/v1/redoc`}
+          url={`${process.env.NEXT_PUBLIC_API_BASE_URL}api/v1/fiches-redoc`}
         ></Iframe>
       </Box>
     </>
