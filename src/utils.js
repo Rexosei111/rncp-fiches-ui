@@ -9,6 +9,9 @@ export const transformDate = (dateString) => {
 };
 
 export function clipText(text, size = 5) {
+  if (typeof text === "undefined") {
+    return null;
+  }
   const words = text.split(" ");
   if (words.length > size) {
     const clippedText = words.slice(0, 5).join(" ") + "...";
