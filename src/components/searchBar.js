@@ -62,6 +62,7 @@ export default function SearchBar() {
     const formData = new FormData(event.target);
     if (!formData.get("search")) {
       setError(true);
+      return null;
     }
     router.push("/fiches/" + formData.get("search"));
   };
@@ -94,6 +95,7 @@ export default function SearchBar() {
               borderColor: "red",
             }}
             error={error}
+            helperText={error ? "This field should not be empty" : null}
             placeholder="Rechercher par numéro RNCP, RS, OF..."
             InputProps={{
               ...params.InputProps,
