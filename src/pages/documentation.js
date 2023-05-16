@@ -10,7 +10,7 @@ export default function APIDocs() {
       <Head>
         <title>API Documentation</title>
       </Head>
-      <Box width={"100%"} height={"89.8vh"}>
+      <Box width={"100%"} minHeight={"92vh"} height={"92vh"}>
         <Iframe
           frameBorder={0}
           allowFullScreen

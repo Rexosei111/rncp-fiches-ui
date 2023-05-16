@@ -65,13 +65,13 @@ export default function Infos({ fiche }) {
                 <Typography
                   variant="caption"
                   fontSize={15}
-                  width={"18%"}
+                  width={"19%"}
                   fontWeight={400}
                   color={"#5A606F"}
                 >
                   Formacode :
                 </Typography>
-                <Breadcrumbs separator="-" sx={{ width: "80%" }}>
+                <Breadcrumbs separator="-" sx={{ width: "79%" }}>
                   {fiche.fiches_formacodes.map((codes, key) => (
                     <Typography
                       key={key}

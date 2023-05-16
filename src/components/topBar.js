@@ -22,6 +22,7 @@ import Tooltip from "@mui/material/Tooltip";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Person } from "@mui/icons-material";
 import { useAuthToken, useProfile } from "../utils";
+import Logo from "./logo";
 
 const drawerWidth = 240;
 const navItems = [
@@ -62,15 +63,7 @@ function DrawerAppBar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography
-        variant="h5"
-        sx={{ my: 2, textDecoration: "none", fontSize: 40 }}
-        component={Link}
-        href="/"
-        fontWeight={600}
-      >
-        LOGO
-      </Typography>
+      <Logo />
       <Divider />
       <List>
         {navItems.map((item) => (
@@ -140,40 +133,7 @@ function DrawerAppBar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Box
-            component={Link}
-            href="/"
-            sx={{
-              flexGrow: 1,
-              display: {
-                textDecoration: "none",
-                fontWeight: 600,
-                fontSize: 30,
-              },
-            }}
-          >
-            <Box width={"5%"} bgcolor={"#FF8300"} p={1} component="span">
-              <Typography
-                variant="h4"
-                fontWeight={700}
-                color={"white"}
-                textAlign={"center"}
-                component={"span"}
-                textTransform={"uppercase"}
-              >
-                F
-              </Typography>
-            </Box>
-            <Typography
-              variant="h6"
-              fontWeight={700}
-              component="span"
-              ml={0.5}
-              color={"#000000"}
-            >
-              ormadata
-            </Typography>
-          </Box>
+          <Logo />
           <Box sx={{ display: { xs: "none", sm: "block" }, mr: 2 }}>
             {navItems.map((item) => (
               <Button

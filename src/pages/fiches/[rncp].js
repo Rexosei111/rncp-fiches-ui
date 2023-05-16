@@ -6,6 +6,7 @@ import {
   Container,
   Paper,
   Stack,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import axios from "axios";
@@ -20,6 +21,8 @@ import Indexes from "@/components/components/details/indexes";
 import Infos from "@/components/components/details/infos";
 import Link from "next/link";
 import { Lato } from "next/font/google";
+import { clipText } from "@/components/utils";
+import { size } from "lodash";
 
 const LatoStyle = Lato({
   subsets: ["latin"],
@@ -77,27 +80,30 @@ export default function FicheDetails() {
               component={Paper}
               flexDirection={"row"}
               justifyContent={"space-between"}
-              gap={5}
+              gap={{ xs: 1, md: 5 }}
               p={3}
               elevation={10}
               width={"100%"}
+              flexWrap={{ xs: "wrap", md: "nowrap" }}
               sx={{ minHeight: 300, borderRadius: 3 }}
             >
               <Stack
-                width={"50%"}
+                width={"100%"}
                 flexDirection={"column"}
                 justifyContent={"center"}
               >
-                <Typography
-                  variant="h1"
-                  fontSize={30}
-                  fontWeight={600}
-                  textAlign={"center"}
-                  fontFamily={LatoStyle.style.fontFamily}
-                  gutterBottom
-                >
-                  {rncpData?.intitule}
-                </Typography>
+                <Tooltip title={rncpData?.intitule}>
+                  <Typography
+                    variant="h1"
+                    fontSize={30}
+                    fontWeight={600}
+                    textAlign={"center"}
+                    fontFamily={LatoStyle.style.fontFamily}
+                    gutterBottom
+                  >
+                    {clipText(rncpData?.intitule, 6)}
+                  </Typography>
+                </Tooltip>
                 <Stack
                   width="100%"
                   flexDirection={"row"}
@@ -131,7 +137,7 @@ export default function FicheDetails() {
                 <Stack
                   width={"100%"}
                   flexDirection={"row"}
-                  justifyContent={"space-between"}
+                  justifyContent={{ xs: "center", md: "space-between" }}
                   my={2}
                 >
                   {rncpData?.ancienne_certification && (
@@ -160,9 +166,9 @@ export default function FicheDetails() {
                 </Stack>
               </Stack>
               <Stack
-                width={"50%"}
+                width={"100%"}
                 p={2}
-                alignItems={"center"}
+                alignItems={{ xs: "flex-start", md: "center" }}
                 justifyContent={"center"}
                 flexDirection={"column"}
               >

@@ -23,13 +23,12 @@ const SearchField = styled(TextField)({
   },
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
-      borderColor: "#E0E3E7",
+      borderRadius: "6px 0px 0px 6px",
     },
     "&:hover fieldset": {
-      borderColor: "#B2BAC2",
+      borderRadius: "6px 0px 0px 6px",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "#0D46A8",
       borderRadius: "6px 0px 0px 6px",
     },
   },

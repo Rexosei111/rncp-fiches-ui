@@ -13,7 +13,11 @@ export default function BlocDate({ data }) {
   const transformedData = removeNullValues(data);
 
   return (
-    <TableContainer component={Paper} elevation={0} sx={{ maxWidth: "80%" }}>
+    <TableContainer
+      component={Paper}
+      elevation={0}
+      sx={{ maxWidth: { xs: "100%", md: "80%" } }}
+    >
       <Table aria-label="simple table" size="small">
         <TableBody>
           {transformedData?.date_dernier_jo && (
