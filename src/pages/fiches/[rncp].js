@@ -115,7 +115,7 @@ export default function FicheDetails() {
                     fontFamily={LatoStyle.style.fontFamily}
                     gutterBottom
                   >
-                    {(rncpData?.intitule, 9)}
+                    {rncpData?.intitule}
                   </Typography>
                 </Tooltip>
                 <Stack
