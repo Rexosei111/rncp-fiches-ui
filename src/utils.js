@@ -1,4 +1,7 @@
 export const transformDate = (dateString) => {
+  if (dateString === null) {
+    return null;
+  }
   const dateObj = new Date(dateString);
   const formattedDate = dateObj.toLocaleDateString("en-GB", {
     day: "2-digit",

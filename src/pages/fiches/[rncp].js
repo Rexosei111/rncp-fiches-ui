@@ -23,6 +23,11 @@ import Link from "next/link";
 import { Lato } from "next/font/google";
 import { clipText } from "@/components/utils";
 import { size } from "lodash";
+import Certificateurs from "@/components/components/details/certificateurs";
+import Partenaires from "@/components/components/details/partenaires";
+import CertDescription from "@/components/components/details/certDescription";
+import BlocCompetence from "@/components/components/details/blocCompetence";
+import StatistiqueTable from "@/components/components/details/statistiqueTable";
 
 const LatoStyle = Lato({
   subsets: ["latin"],
@@ -190,17 +195,48 @@ export default function FicheDetails() {
               </Stack>
             </Stack>
           </Stack>
-          <Stack
-            gap={5}
-            flexDirection={"row"}
-            my={2}
-            flexWrap={{ xs: "wrap", md: "nowrap" }}
-          >
-            <CardWrapper title={"Index"}>
-              <Indexes />
+          <Stack flexDirection={"column"} gap={3}>
+            <Stack
+              gap={5}
+              flexDirection={"row"}
+              my={2}
+              flexWrap={{ xs: "wrap", md: "nowrap" }}
+            >
+              <CardWrapper title={"Index"}>
+                <Indexes />
+              </CardWrapper>
+              <CardWrapper title={"Informations de référence"}>
+                <Infos fiche={rncpData} />
+              </CardWrapper>
+            </Stack>
+            <Stack
+              gap={5}
+              flexDirection={"row"}
+              my={2}
+              flexWrap={{ xs: "wrap", md: "nowrap" }}
+            >
+              <CardWrapper title={"Partenaire"}>
+                <Partenaires partenaires={rncpData?.fiches_partenaires} />
+              </CardWrapper>
+              <CardWrapper title={"Certificateur"}>
+                <Certificateurs
+                  certificateurs={rncpData?.fiches_certificateurs}
+                />
+              </CardWrapper>
+            </Stack>
+            <CardWrapper
+              title={"Description de la certification"}
+              width={"100%"}
+            >
+              <CertDescription descriptions={rncpData?.fiches_descriptions} />
             </CardWrapper>
-            <CardWrapper title={"Informations de référence"}>
-              <Infos fiche={rncpData} />
+            <CardWrapper title={"Blocs de compétences"} width={"100%"}>
+              <BlocCompetence code_blocs={rncpData?.blocs_competences} />
+            </CardWrapper>
+            <CardWrapper title={"Statistiques"} width={"100%"}>
+              <StatistiqueTable
+                statistiques={rncpData?.statistiques_promotion}
+              />
             </CardWrapper>
           </Stack>
         </Container>

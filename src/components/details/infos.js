@@ -32,17 +32,20 @@ export default function Infos({ fiche }) {
         {fiche.fiches_codes_nsf && (
           <ListItem disablePadding disableGutters>
             <ListItemText>
-              <Stack flexDirection={"row"} alignItems={"flex-start"} gap={2}>
+              <Stack
+                flexDirection={{ xs: "column", md: "row" }}
+                alignItems={"flex-start"}
+                gap={{ xs: 1, md: 2 }}
+              >
                 <Typography
                   variant="caption"
                   fontSize={15}
                   fontWeight={400}
-                  width={"18%"}
                   color={"#5A606F"}
                 >
                   Codes NSF :
                 </Typography>
-                <Breadcrumbs separator="-" sx={{ width: "80%" }}>
+                <Breadcrumbs separator="-" sx={{ flexGrow: 1 }}>
                   {fiche.fiches_codes_nsf.map((code_nsf, key) => (
                     <Typography
                       key={key}
@@ -61,17 +64,20 @@ export default function Infos({ fiche }) {
         {fiche.fiches_formacodes && (
           <ListItem disablePadding disableGutters>
             <ListItemText>
-              <Stack flexDirection={"row"} alignItems={"flex-start"} gap={2}>
+              <Stack
+                flexDirection={{ xs: "column", md: "row" }}
+                alignItems={"flex-start"}
+                gap={{ xs: 1, md: 2 }}
+              >
                 <Typography
                   variant="caption"
                   fontSize={15}
-                  width={"19%"}
                   fontWeight={400}
                   color={"#5A606F"}
                 >
                   Formacode :
                 </Typography>
-                <Breadcrumbs separator="-" sx={{ width: "79%" }}>
+                <Breadcrumbs separator="-" sx={{ flexGrow: 1 }}>
                   {fiche.fiches_formacodes.map((codes, key) => (
                     <Typography
                       key={key}
@@ -90,10 +96,13 @@ export default function Infos({ fiche }) {
         {fiche.nomenclature_europe_intitule && (
           <ListItem disablePadding>
             <ListItemText>
-              <Stack flexDirection={"row"} alignItems={"flex-start"} gap={2}>
+              <Stack
+                flexDirection={{ xs: "column", md: "row" }}
+                alignItems={"flex-start"}
+                gap={{ xs: 1, md: 2 }}
+              >
                 <Typography
                   variant="caption"
-                  width={"35%"}
                   fontSize={15}
                   fontWeight={400}
                   color={"#5A606F"}
@@ -104,6 +113,7 @@ export default function Infos({ fiche }) {
                   variant="subtitle2"
                   color={"black"}
                   fontWeight={400}
+                  flexGrow={1}
                 >
                   {fiche.nomenclature_europe_intitule}
                 </Typography>
@@ -113,17 +123,25 @@ export default function Infos({ fiche }) {
         )}
         <ListItem disablePadding>
           <ListItemText>
-            <Stack flexDirection={"row"} alignItems={"flex-start"} gap={2}>
+            <Stack
+              flexDirection={{ xs: "column", md: "row" }}
+              alignItems={"flex-start"}
+              gap={{ xs: 1, md: 2 }}
+            >
               <Typography
                 variant="caption"
-                width={"60%"}
                 fontSize={15}
                 fontWeight={400}
                 color={"#5A606F"}
               >
                 Inscrite au cadre de Nouvelle Calédonie :
               </Typography>
-              <Stack flexDirection={"row"} alignItems={"center"} gap={1}>
+              <Stack
+                flexDirection={"row"}
+                alignItems={"center"}
+                gap={1}
+                flexGrow={1}
+              >
                 <Typography
                   variant="subtitle2"
                   color={
@@ -152,17 +170,25 @@ export default function Infos({ fiche }) {
         </ListItem>
         <ListItem disablePadding>
           <ListItemText>
-            <Stack flexDirection={"row"} alignItems={"flex-start"} gap={2}>
+            <Stack
+              flexDirection={{ xs: "column", md: "row" }}
+              alignItems={"flex-start"}
+              gap={{ xs: 1, md: 2 }}
+            >
               <Typography
                 variant="caption"
                 fontSize={15}
-                width={"60%"}
                 fontWeight={400}
                 color={"#5A606F"}
               >
                 Inscrite au cadre de la Polynésie Française :
               </Typography>
-              <Stack flexDirection={"row"} alignItems={"center"} gap={1}>
+              <Stack
+                flexDirection={"row"}
+                alignItems={"center"}
+                gap={1}
+                flexGrow={1}
+              >
                 <Typography
                   variant="subtitle2"
                   color={

@@ -18,13 +18,17 @@ const indexes = [
   "Admission",
   "Cible professionnelle",
 ];
-export default function CardWrapper({ children, title }) {
+export default function CardWrapper({
+  children,
+  title,
+  width = { xs: "100%", md: "50%" },
+}) {
   return (
     <Paper
       elevation={24}
       sx={{
         p: 3,
-        width: { xs: "100%", md: "50%" },
+        width: width,
         borderRadius: 2,
       }}
     >
