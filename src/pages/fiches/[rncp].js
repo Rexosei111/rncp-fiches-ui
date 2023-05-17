@@ -195,11 +195,10 @@ export default function FicheDetails() {
               </Stack>
             </Stack>
           </Stack>
-          <Stack flexDirection={"column"} gap={3}>
+          <Stack flexDirection={"column"} gap={5} my={3}>
             <Stack
               gap={5}
               flexDirection={"row"}
-              my={2}
               flexWrap={{ xs: "wrap", md: "nowrap" }}
             >
               <CardWrapper title={"Index"}>
