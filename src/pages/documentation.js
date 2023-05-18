@@ -10,7 +10,7 @@ export default function APIDocs() {
         <title>API Documentation</title>
       </Head>
       <RedocStandalone
-        specUrl={`${process.env.NEXT_PUBLIC_API_BASE_URL}api/v1/fiches-openapi`}
+        specUrl={`${process.env.NEXT_PUBLIC_API_BASE_URL}/fiches-openapi`}
         options={{
           theme: { colors: { primary: { main: "#FF8300" } } },
         }}

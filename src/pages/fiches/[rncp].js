@@ -45,7 +45,7 @@ export default function FicheDetails() {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          process.env.NEXT_PUBLIC_API_BASE_URL + "/fiches/" + rncp
+          process.env.NEXT_PUBLIC_API_BASE_URL + "/private/fiches/" + rncp
         );
         setLoading(false);
         setRncpData(data);

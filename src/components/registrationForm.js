@@ -69,7 +69,7 @@ export default function RegistrationForm() {
     }
     try {
       const { data } = await axios.post(
-        process.env.NEXT_PUBLIC_API_BASE_URL + "/auth/register",
+        process.env.NEXT_PUBLIC_API_BASE_URL + "/private/auth/register",
         formData,
         {
           headers: {
