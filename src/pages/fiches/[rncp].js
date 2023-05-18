@@ -39,10 +39,13 @@ export default function FicheDetails() {
   const { rncp } = router.query;
   useEffect(() => {
     async function fetchRncp() {
+      const { rncp: numero_fiche } = router.query;
       setLoading(true);
       try {
         const { data } = await axios.get(
-          process.env.NEXT_PUBLIC_API_BASE_URL + "/private/fiches/" + rncp
+          process.env.NEXT_PUBLIC_API_BASE_URL +
+            "/private/fiches/" +
+            numero_fiche
         );
         setLoading(false);
         setRncpData(data);
@@ -51,8 +54,10 @@ export default function FicheDetails() {
         setLoading(false);
       }
     }
-    fetchRncp();
-  }, []);
+    if (router.isReady) {
+      fetchRncp();
+    }
+  }, [router.isReady]);
 
   const calculateFontSize = (text) => {
     const words = text.split(" ");
