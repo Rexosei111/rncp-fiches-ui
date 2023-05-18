@@ -73,7 +73,7 @@ export default function BasicDetailForm({ setEdit }) {
   const onSubmit = async (update_data) => {
     setLoading(true);
     const { data, error } = await axios.patch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}api/auth/users/me`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/users/me`,
       update_data,
       {
         headers: {

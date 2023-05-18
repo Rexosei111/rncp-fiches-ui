@@ -33,30 +33,41 @@ export default function Infos({ fiche }) {
           <ListItem disablePadding disableGutters>
             <ListItemText>
               <Stack
-                flexDirection={{ xs: "column", md: "row" }}
-                alignItems={"flex-start"}
-                gap={{ xs: 1, md: 2 }}
+                flexDirection={"row"}
+                flexWrap={{ xs: "wrap", md: "nowrap" }}
+                justifyContent={"space-between"}
               >
                 <Typography
                   variant="caption"
                   fontSize={15}
                   fontWeight={400}
                   color={"#5A606F"}
+                  width={{ xs: "100%", md: 160 }}
+                  // sx={{ bgcolor: "red" }}
                 >
                   Codes NSF :
                 </Typography>
-                <Breadcrumbs separator="-" sx={{ flexGrow: 1 }}>
+                <Box
+                  sx={{
+                    p: 0,
+                    ml: { xs: 0, md: 0 },
+                    listStyle: "none",
+                  }}
+                  component={"ol"}
+                >
                   {fiche.fiches_codes_nsf.map((code_nsf, key) => (
                     <Typography
+                      component={"li"}
                       key={key}
                       variant="subtitle2"
                       color={"black"}
                       fontWeight={400}
                     >
-                      {code_nsf.code_NSF.code_nsf}, {code_nsf.code_NSF.libelle}
+                      {code_nsf.code_NSF.code_nsf}{" "}
+                      {`(${code_nsf.code_NSF.libelle})`}
                     </Typography>
                   ))}
-                </Breadcrumbs>
+                </Box>
               </Stack>
             </ListItemText>
           </ListItem>
@@ -65,30 +76,41 @@ export default function Infos({ fiche }) {
           <ListItem disablePadding disableGutters>
             <ListItemText>
               <Stack
-                flexDirection={{ xs: "column", md: "row" }}
-                alignItems={"flex-start"}
-                gap={{ xs: 1, md: 2 }}
+                flexDirection={"row"}
+                flexWrap={{ xs: "wrap", md: "nowrap" }}
+                alignItems={"space-between"}
               >
                 <Typography
                   variant="caption"
                   fontSize={15}
                   fontWeight={400}
                   color={"#5A606F"}
+                  width={{ xs: "100%", md: 120 }}
                 >
                   Formacode :
                 </Typography>
-                <Breadcrumbs separator="-" sx={{ flexGrow: 1 }}>
+                <Box
+                  sx={{
+                    flexGrow: 1,
+                    p: 0,
+                    ml: { xs: 0, md: 0 },
+                    listStyle: "none",
+                  }}
+                  component={"ol"}
+                >
                   {fiche.fiches_formacodes.map((codes, key) => (
                     <Typography
+                      component={"li"}
                       key={key}
                       variant="subtitle2"
                       color={"black"}
                       fontWeight={400}
                     >
-                      {codes.formacodes.formacode}, {codes.formacodes.libelle}
+                      {codes.formacodes.formacode}{" "}
+                      {`(${codes.formacodes.libelle})`}
                     </Typography>
                   ))}
-                </Breadcrumbs>
+                </Box>
               </Stack>
             </ListItemText>
           </ListItem>

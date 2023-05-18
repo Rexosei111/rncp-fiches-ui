@@ -45,7 +45,7 @@ export default function FicheDetails() {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          process.env.NEXT_PUBLIC_API_BASE_URL + "api/v1/private/fiches/" + rncp
+          process.env.NEXT_PUBLIC_API_BASE_URL + "/fiches/" + rncp
         );
         setLoading(false);
         setRncpData(data);
@@ -155,7 +155,8 @@ export default function FicheDetails() {
                 </Stack>
                 <Stack
                   width={"100%"}
-                  flexDirection={"row"}
+                  flexDirection={{ xs: "column", md: "row" }}
+                  // flexWrap={{ xs: "wrap", lg: "nowrap" }}
                   justifyContent={{ xs: "center", md: "space-between" }}
                   my={2}
                 >
@@ -165,6 +166,7 @@ export default function FicheDetails() {
                       fontSize={14}
                       color={"#5A606F"}
                       component={Link}
+                      textAlign={"center"}
                       href={"/fiches/" + rncpData?.ancienne_certification}
                     >
                       Certification antérieure :{" "}
@@ -177,6 +179,8 @@ export default function FicheDetails() {
                       fontSize={14}
                       color={"#5A606F"}
                       component={Link}
+                      textAlign={"center"}
+                      ml={{ xs: 0, md: "auto" }}
                       href={"/fiches/" + rncpData?.nouvelle_certification}
                     >
                       Remplacée par : {rncpData?.nouvelle_certification}
@@ -201,10 +205,10 @@ export default function FicheDetails() {
               flexDirection={"row"}
               flexWrap={{ xs: "wrap", md: "nowrap" }}
             >
-              <CardWrapper title={"Index"}>
+              <CardWrapper title={"Index"} id={"indexes"}>
                 <Indexes />
               </CardWrapper>
-              <CardWrapper title={"Informations de référence"}>
+              <CardWrapper title={"Informations de référence"} id={"reference"}>
                 <Infos fiche={rncpData} />
               </CardWrapper>
             </Stack>
@@ -214,25 +218,34 @@ export default function FicheDetails() {
               my={2}
               flexWrap={{ xs: "wrap", md: "nowrap" }}
             >
-              <CardWrapper title={"Partenaire"}>
-                <Partenaires partenaires={rncpData?.fiches_partenaires} />
-              </CardWrapper>
-              <CardWrapper title={"Certificateur"}>
+              <CardWrapper title={"Certificateur"} id={"certificateur"}>
                 <Certificateurs
                   certificateurs={rncpData?.fiches_certificateurs}
                 />
+              </CardWrapper>
+              <CardWrapper title={"Partenaire"} id={"partenaires"}>
+                <Partenaires partenaires={rncpData?.fiches_partenaires} />
               </CardWrapper>
             </Stack>
             <CardWrapper
               title={"Description de la certification"}
               width={"100%"}
+              id={"certDescription"}
             >
               <CertDescription descriptions={rncpData?.fiches_descriptions} />
             </CardWrapper>
-            <CardWrapper title={"Blocs de compétences"} width={"100%"}>
+            <CardWrapper
+              title={"Blocs de compétences"}
+              width={"100%"}
+              id={"blocCompetence"}
+            >
               <BlocCompetence code_blocs={rncpData?.blocs_competences} />
             </CardWrapper>
-            <CardWrapper title={"Statistiques"} width={"100%"}>
+            <CardWrapper
+              title={"Statistiques"}
+              width={"100%"}
+              id={"statistiques"}
+            >
               <StatistiqueTable
                 statistiques={rncpData?.statistiques_promotion}
               />

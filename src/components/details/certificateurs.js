@@ -92,7 +92,7 @@ export default function Certificateurs({ certificateurs = [] }) {
                   </ListItemText>
                 </ListItem>
               </List>
-              {/* <Divider flexItem variant="middle" /> */}
+              <Divider flexItem variant="fullWidth" />
             </>
           ))}
         </Stack>

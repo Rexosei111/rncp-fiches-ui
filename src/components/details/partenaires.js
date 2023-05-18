@@ -5,7 +5,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  Paper,
   Stack,
   Typography,
 } from "@mui/material";
@@ -173,7 +172,7 @@ export default function Partenaires({ partenaires = [] }) {
                   </ListItemText>
                 </ListItem>
               </List>
-              {/* <Divider flexItem variant="fullWidth" /> */}
+              <Divider flexItem variant="fullWidth" />
             </>
           ))}
         </Stack>

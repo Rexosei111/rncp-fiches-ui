@@ -34,7 +34,7 @@ export const authOptions = {
         let response_data = {};
         try {
           const { data } = await axios.post(
-            process.env.NEXT_PUBLIC_API_BASE_URL + "api/auth/jwt/login",
+            process.env.NEXT_PUBLIC_API_BASE_URL + "/auth/jwt/login",
             form,
             {
               headers: {
@@ -51,7 +51,7 @@ export const authOptions = {
 
         try {
           const { data } = await axios.get(
-            process.env.NEXT_PUBLIC_API_BASE_URL + "api/auth/users/me",
+            process.env.NEXT_PUBLIC_API_BASE_URL + "/auth/users/me",
             {
               headers: {
                 "Content-Type": "application/json",
@@ -66,7 +66,7 @@ export const authOptions = {
 
         try {
           const { data } = await axios.get(
-            process.env.NEXT_PUBLIC_API_BASE_URL + "api/auth/users/me/api-key",
+            process.env.NEXT_PUBLIC_API_BASE_URL + "/auth/users/me/api-key",
             {
               headers: {
                 "Content-Type": "application/json",

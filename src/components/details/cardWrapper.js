@@ -22,6 +22,7 @@ export default function CardWrapper({
   children,
   title,
   width = { xs: "100%", md: "50%" },
+  id,
 }) {
   return (
     <Paper
@@ -31,6 +32,7 @@ export default function CardWrapper({
         width: width,
         borderRadius: 2,
       }}
+      id={id}
     >
       <Box>
         <Typography

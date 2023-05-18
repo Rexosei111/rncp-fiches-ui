@@ -31,7 +31,7 @@ export default function BlocDate({ data }) {
                 align="left"
               >
                 <Typography variant="caption" fontSize={15} color={"#5A606F"}>
-                  Date du JO/BO:
+                  Date du JO/BO :
                 </Typography>
               </TableCell>
               <TableCell align="left" sx={{ border: "none" }}>
@@ -50,7 +50,7 @@ export default function BlocDate({ data }) {
                 sx={{ border: "none" }}
               >
                 <Typography variant="caption" fontSize={15} color={"#5A606F"}>
-                  Date de décision
+                  Date de décision :
                 </Typography>
               </TableCell>
               <TableCell align="left" sx={{ border: "none" }}>
@@ -69,7 +69,7 @@ export default function BlocDate({ data }) {
                 sx={{ border: "none" }}
               >
                 <Typography variant="caption" fontSize={15} color={"#5A606F"}>
-                  Date d’effet:
+                  Date d’effet :
                 </Typography>
               </TableCell>
               <TableCell align="left" sx={{ border: "none" }}>
@@ -88,7 +88,7 @@ export default function BlocDate({ data }) {
                 sx={{ border: "none" }}
               >
                 <Typography variant="caption" fontSize={15} color={"#5A606F"}>
-                  Date de publication:
+                  Date de publication :
                 </Typography>
               </TableCell>
               <TableCell align="left" sx={{ border: "none" }}>
@@ -107,7 +107,7 @@ export default function BlocDate({ data }) {
                 sx={{ border: "none" }}
               >
                 <Typography variant="caption" fontSize={15} color={"#5A606F"}>
-                  Durée d’enregistrement (années):
+                  Durée d’enregistrement (années) :
                 </Typography>
               </TableCell>
               <TableCell align="left" sx={{ border: "none", color: "#5A606F" }}>
@@ -126,7 +126,7 @@ export default function BlocDate({ data }) {
                 sx={{ border: "none" }}
               >
                 <Typography variant="caption" fontSize={15} color={"#5A606F"}>
-                  Date de fin d’enregistrement:
+                  Date de fin d’enregistrement :
                 </Typography>
               </TableCell>
               <TableCell align="left" sx={{ border: "none" }}>
@@ -145,7 +145,7 @@ export default function BlocDate({ data }) {
                 sx={{ border: "none" }}
               >
                 <Typography variant="caption" fontSize={15} color={"#5A606F"}>
-                  Date limite de délivrance:
+                  Date limite de délivrance :
                 </Typography>
               </TableCell>
               <TableCell align="left" sx={{ border: "none" }}>
