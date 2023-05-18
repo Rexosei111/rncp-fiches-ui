@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
@@ -31,18 +30,18 @@ const LatoStyle = Lato({
   weight: ["100", "300", "400", "700"],
 });
 
-export default function FicheDetails() {
-  const router = useRouter();
+export default function FicheDetails({ numero_fiche }) {
   const [loading, setLoading] = useState(false);
   const [rncpData, setRncpData] = useState({});
   const [blocDate, setBlocDate] = useState({});
-  const { rncp } = router.query;
   useEffect(() => {
     async function fetchRncp() {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          process.env.NEXT_PUBLIC_API_BASE_URL + "/private/fiches/" + rncp
+          process.env.NEXT_PUBLIC_API_BASE_URL +
+            "/private/fiches/" +
+            numero_fiche
         );
         setLoading(false);
         setRncpData(data);
@@ -52,7 +51,7 @@ export default function FicheDetails() {
       }
     }
     fetchRncp();
-  }, [rncp]);
+  }, []);
 
   const calculateFontSize = (text) => {
     const words = text.split(" ");
@@ -79,7 +78,7 @@ export default function FicheDetails() {
   return (
     <>
       <Head>
-        <title>{rncp}</title>
+        <title>{numero_fiche}</title>
       </Head>
       {loading && <DetailSkeleton />}
       {!loading && (
@@ -253,6 +252,12 @@ export default function FicheDetails() {
     </>
   );
 }
+
+FicheDetails.getInitialProps = async (context) => {
+  return {
+    numero_fiche: context.query.rncp,
+  };
+};
 
 FicheDetails.getLayout = function (page) {
   return <Layout>{page}</Layout>;
