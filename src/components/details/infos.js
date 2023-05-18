@@ -28,7 +28,7 @@ export default function Infos({ fiche }) {
       fontFamily={popins.style.fontFamily}
     >
       <List dense>
-        {fiche.fiches_codes_nsf && (
+        {fiche && fiche.fiches_codes_nsf && (
           <ListItem disablePadding disableGutters>
             <ListItemText>
               <Stack
@@ -72,7 +72,7 @@ export default function Infos({ fiche }) {
             </ListItemText>
           </ListItem>
         )}
-        {fiche.fiches_formacodes && (
+        {fiche && fiche.fiches_formacodes && (
           <ListItem disablePadding disableGutters>
             <ListItemText>
               <Stack
@@ -117,7 +117,7 @@ export default function Infos({ fiche }) {
             </ListItemText>
           </ListItem>
         )}
-        {fiche.nomenclature_europe_intitule && (
+        {fiche && fiche.nomenclature_europe_intitule && (
           <ListItem disablePadding>
             <ListItemText>
               <Stack

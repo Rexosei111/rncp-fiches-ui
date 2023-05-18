@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
@@ -31,9 +32,11 @@ const LatoStyle = Lato({
 });
 
 export default function FicheDetails({ numero_fiche }) {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [rncpData, setRncpData] = useState({});
   const [blocDate, setBlocDate] = useState({});
+  const { rncp } = router.query;
   useEffect(() => {
     async function fetchRncp() {
       setLoading(true);
@@ -78,7 +81,7 @@ export default function FicheDetails({ numero_fiche }) {
   return (
     <>
       <Head>
-        <title>{numero_fiche}</title>
+        <title>{rncp}</title>
       </Head>
       {loading && <DetailSkeleton />}
       {!loading && (
