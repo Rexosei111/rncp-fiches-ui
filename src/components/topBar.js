@@ -17,11 +17,9 @@ import Link from "../Link";
 import { Avatar, Menu, Stack } from "@mui/material";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import SettingsIcon from "@mui/icons-material/Settings";
 import Tooltip from "@mui/material/Tooltip";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Person } from "@mui/icons-material";
-import { useAuthToken, useProfile } from "../utils";
 import Logo from "./logo";
 
 const drawerWidth = 240;

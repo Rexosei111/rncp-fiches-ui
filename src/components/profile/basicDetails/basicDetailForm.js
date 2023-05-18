@@ -1,28 +1,16 @@
 import React, { useState } from "react";
-import {
-  Alert,
-  Button,
-  Divider,
-  Paper,
-  Snackbar,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Alert, Snackbar, Stack, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import InputAdornment from "@mui/material/InputAdornment";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import LoadingButton from "@mui/lab/LoadingButton";
 import LoginIcon from "@mui/icons-material/Login";
-import Link from "@/components/Link";
 import { useRouter } from "next/router";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { PersonOutline } from "@mui/icons-material";
 import axios, { isAxiosError } from "axios";
-import { useAuthToken, useProfile } from "@/components/utils";
 
 const loginSchema = yup
   .object({

@@ -1,16 +1,13 @@
 import {
   ContentCopyOutlined,
-  CopyAllOutlined,
   KeyOffOutlined,
   KeyOutlined,
-  MailOutline,
 } from "@mui/icons-material";
 import {
   Box,
   ClickAwayListener,
   Divider,
   IconButton,
-  InputAdornment,
   List,
   ListItem,
   ListItemIcon,

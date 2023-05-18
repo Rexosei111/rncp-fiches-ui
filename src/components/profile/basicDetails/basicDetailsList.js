@@ -11,10 +11,8 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import BasicDetailForm from "./basicDetailForm";
-import { useAuthToken, useProfile } from "@/components/utils";
-import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 

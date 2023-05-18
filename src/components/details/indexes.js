@@ -8,7 +8,7 @@ import {
 import React from "react";
 import CircleIcon from "@mui/icons-material/Circle";
 import { Poppins } from "next/font/google";
-import Link from "next/link";
+import { Link as scrollLink } from "react-scroll";
 
 const popins = Poppins({
   subsets: ["latin"],
@@ -16,15 +16,15 @@ const popins = Poppins({
 });
 
 const indexes = [
-  { name: "Informations de référence", id: "#reference" },
-  { name: "Description de la certification", id: "#certDescription" },
-  { name: "Certificateur", id: "#certificateur" },
-  { name: "Statistiques", id: "#statistiques" },
-  { name: "Blocs de compétences", id: "#blocCompetence" },
-  { name: "Partenaire", id: "#partenaires" },
-  { name: "Voies d'accès", id: "#" },
-  { name: "Admission", id: "#" },
-  { name: "Cible professionnelle", id: "#" },
+  { name: "Informations de référence", id: "reference" },
+  { name: "Certificateur", id: "certificateur" },
+  { name: "Partenaire", id: "partenaires" },
+  { name: "Description de la certification", id: "certDescription" },
+  { name: "Blocs de compétences", id: "blocCompetence" },
+  { name: "Statistiques", id: "statistiques" },
+  { name: "Voies d'accès", id: "" },
+  { name: "Admission", id: "" },
+  { name: "Cible professionnelle", id: "" },
 ];
 export default function Indexes() {
   return (
@@ -43,10 +43,13 @@ export default function Indexes() {
               variant="caption"
               fontSize={15}
               fontFamily={popins.style.fontFamily}
-              component={Link}
-              href={item.id}
+              component={scrollLink}
+              to={item.id}
+              spy={true}
+              smooth={true}
+              duration={500}
               color={"black"}
-              sx={{ textDecoration: "none" }}
+              sx={{ textDecoration: "none", cursor: "pointer" }}
             >
               {item.name}
             </Typography>

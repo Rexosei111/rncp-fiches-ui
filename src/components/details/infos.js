@@ -1,6 +1,5 @@
 import {
   Box,
-  Breadcrumbs,
   List,
   ListItem,
   ListItemText,
@@ -35,22 +34,23 @@ export default function Infos({ fiche }) {
               <Stack
                 flexDirection={"row"}
                 flexWrap={{ xs: "wrap", md: "nowrap" }}
-                justifyContent={"space-between"}
+                alignItems={"flex-start"}
               >
                 <Typography
                   variant="caption"
                   fontSize={15}
                   fontWeight={400}
                   color={"#5A606F"}
-                  width={{ xs: "100%", md: 160 }}
-                  // sx={{ bgcolor: "red" }}
+                  flexBasis={"auto"}
+                  whiteSpace={"nowrap"}
                 >
                   Codes NSF :
                 </Typography>
                 <Box
                   sx={{
                     p: 0,
-                    ml: { xs: 0, md: 0 },
+                    ml: { xs: 0, md: 2 },
+                    flexBasis: "100%",
                     listStyle: "none",
                   }}
                   component={"ol"}
@@ -85,7 +85,8 @@ export default function Infos({ fiche }) {
                   fontSize={15}
                   fontWeight={400}
                   color={"#5A606F"}
-                  width={{ xs: "100%", md: 120 }}
+                  flexBasis={"auto"}
+                  whiteSpace={"nowrap"}
                 >
                   Formacode :
                 </Typography>
@@ -93,7 +94,8 @@ export default function Infos({ fiche }) {
                   sx={{
                     flexGrow: 1,
                     p: 0,
-                    ml: { xs: 0, md: 0 },
+                    ml: { xs: 0, md: 2 },
+                    flexBasis: "100%",
                     listStyle: "none",
                   }}
                   component={"ol"}
@@ -119,15 +121,18 @@ export default function Infos({ fiche }) {
           <ListItem disablePadding>
             <ListItemText>
               <Stack
-                flexDirection={{ xs: "column", md: "row" }}
-                alignItems={"flex-start"}
-                gap={{ xs: 1, md: 2 }}
+                flexDirection={"row"}
+                flexWrap={{ xs: "wrap", md: "nowrap" }}
+                alignItems={"space-between"}
+                gap={{ xs: 0, md: 2 }}
               >
                 <Typography
                   variant="caption"
                   fontSize={15}
                   fontWeight={400}
                   color={"#5A606F"}
+                  flexBasis={"auto"}
+                  whiteSpace={"nowrap"}
                 >
                   Niveau de qualification :
                 </Typography>
@@ -135,7 +140,7 @@ export default function Infos({ fiche }) {
                   variant="subtitle2"
                   color={"black"}
                   fontWeight={400}
-                  flexGrow={1}
+                  flexBasis={"100%"}
                 >
                   {fiche.nomenclature_europe_intitule}
                 </Typography>
@@ -146,21 +151,25 @@ export default function Infos({ fiche }) {
         <ListItem disablePadding>
           <ListItemText>
             <Stack
-              flexDirection={{ xs: "column", md: "row" }}
-              alignItems={"flex-start"}
-              gap={{ xs: 1, md: 2 }}
+              flexDirection={"row"}
+              flexWrap={{ xs: "wrap", md: "nowrap" }}
+              alignItems={"space-between"}
+              gap={{ xs: 0, md: 2 }}
             >
               <Typography
                 variant="caption"
                 fontSize={15}
                 fontWeight={400}
                 color={"#5A606F"}
+                flexBasis={"auto"}
+                whiteSpace={"nowrap"}
               >
                 Inscrite au cadre de Nouvelle Calédonie :
               </Typography>
               <Stack
                 flexDirection={"row"}
                 alignItems={"center"}
+                flexBasis={"100%"}
                 gap={1}
                 flexGrow={1}
               >
@@ -193,21 +202,25 @@ export default function Infos({ fiche }) {
         <ListItem disablePadding>
           <ListItemText>
             <Stack
-              flexDirection={{ xs: "column", md: "row" }}
-              alignItems={"flex-start"}
-              gap={{ xs: 1, md: 2 }}
+              flexDirection={"row"}
+              flexWrap={{ xs: "wrap", md: "nowrap" }}
+              alignItems={"space-between"}
+              gap={{ xs: 0, md: 2 }}
             >
               <Typography
                 variant="caption"
                 fontSize={15}
                 fontWeight={400}
                 color={"#5A606F"}
+                flexBasis={"auto"}
+                whiteSpace={"nowrap"}
               >
                 Inscrite au cadre de la Polynésie Française :
               </Typography>
               <Stack
                 flexDirection={"row"}
                 alignItems={"center"}
+                flexBasis={"100%"}
                 gap={1}
                 flexGrow={1}
               >

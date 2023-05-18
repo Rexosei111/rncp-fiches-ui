@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/layout";
-import { Container, Stack } from "@mui/material";
+import { Container } from "@mui/material";
 import RegistrationForm from "../components/registrationForm";
 import Head from "next/head";
 

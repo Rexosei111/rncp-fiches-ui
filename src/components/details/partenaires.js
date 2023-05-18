@@ -36,27 +36,29 @@ export default function Partenaires({ partenaires = [] }) {
       )}
       {partenaires.length > 0 && (
         <Stack flexDirection={"column"} gap={{ xs: 2, md: 1 }}>
-          {partenaires?.map((fiche_partenaire) => (
-            <>
+          {partenaires?.map((fiche_partenaire, index) => (
+            <Box key={index}>
               <List elevation={0} disablePadding dense>
                 <ListItem disableGutters disablePadding>
                   <ListItemText>
                     <Stack
                       flexDirection={{ xs: "column", md: "row" }}
-                      gap={{ xs: 1, md: 2 }}
-                      alignItems={{ xs: "flex-start", md: "flex-start" }}
+                      gap={{ xs: 0, md: 2 }}
+                      alignItems="flex-start"
                     >
                       <Typography
                         variant="caption"
                         fontSize={15}
                         fontWeight={400}
                         color={"#5A606F"}
+                        flexBasis={"auto"}
+                        whiteSpace={{ xs: "normal", md: "nowrap" }}
                       >
                         Nom :
                       </Typography>
                       <Typography
                         variant="subtitle2"
-                        flexGrow={1}
+                        flexBasis={"100%"}
                         color={"black"}
                         fontWeight={400}
                       >
@@ -69,20 +71,22 @@ export default function Partenaires({ partenaires = [] }) {
                   <ListItemText>
                     <Stack
                       flexDirection={{ xs: "column", md: "row" }}
-                      gap={{ xs: 1, md: 2 }}
-                      alignItems={{ xs: "flex-start", md: "flex-start" }}
+                      gap={{ xs: 0, md: 2 }}
+                      alignItems="flex-start"
                     >
                       <Typography
                         variant="caption"
                         fontSize={15}
                         fontWeight={400}
                         color={"#5A606F"}
+                        flexBasis={"auto"}
+                        whiteSpace={{ xs: "normal", md: "nowrap" }}
                       >
                         Siret :
                       </Typography>
                       <Typography
                         variant="subtitle2"
-                        flexGrow={1}
+                        flexBasis={"100%"}
                         color={"black"}
                         fontWeight={400}
                       >
@@ -91,24 +95,59 @@ export default function Partenaires({ partenaires = [] }) {
                     </Stack>
                   </ListItemText>
                 </ListItem>
+                {fiche_partenaire.organisme.nom_organisme_fichier_qualiopi && (
+                  <ListItem disableGutters disablePadding>
+                    <ListItemText>
+                      <Stack
+                        flexDirection={{ xs: "column", md: "row" }}
+                        gap={{ xs: 0, md: 2 }}
+                        alignItems="flex-start"
+                      >
+                        <Typography
+                          variant="caption"
+                          fontSize={15}
+                          fontWeight={400}
+                          color={"#5A606F"}
+                          flexBasis={"auto"}
+                          whiteSpace={{ xs: "normal", md: "nowrap" }}
+                        >
+                          Fichier qualiopi :
+                        </Typography>
+                        <Typography
+                          variant="subtitle2"
+                          flexBasis={"100%"}
+                          color={"black"}
+                          fontWeight={400}
+                        >
+                          {
+                            fiche_partenaire.organisme
+                              .nom_organisme_fichier_qualiopi
+                          }
+                        </Typography>
+                      </Stack>
+                    </ListItemText>
+                  </ListItem>
+                )}
                 <ListItem disableGutters disablePadding>
                   <ListItemText>
                     <Stack
                       flexDirection={{ xs: "column", md: "row" }}
-                      gap={{ xs: 1, md: 2 }}
-                      alignItems={{ xs: "flex-start", md: "flex-start" }}
+                      gap={{ xs: 0, md: 2 }}
+                      alignItems="flex-start"
                     >
                       <Typography
                         variant="caption"
                         fontSize={15}
                         fontWeight={400}
                         color={"#5A606F"}
+                        flexBasis={"auto"}
+                        whiteSpace={{ xs: "normal", md: "nowrap" }}
                       >
                         Habilitation partenaire :
                       </Typography>
                       <Typography
                         variant="subtitle2"
-                        flexGrow={1}
+                        flexBasis={"100%"}
                         color={"black"}
                         fontWeight={400}
                       >
@@ -121,20 +160,22 @@ export default function Partenaires({ partenaires = [] }) {
                   <ListItemText>
                     <Stack
                       flexDirection={{ xs: "column", md: "row" }}
-                      gap={{ xs: 1, md: 2 }}
-                      alignItems={{ xs: "flex-start", md: "flex-start" }}
+                      gap={{ xs: 0, md: 2 }}
+                      alignItems="flex-start"
                     >
                       <Typography
                         variant="caption"
                         fontSize={15}
                         fontWeight={400}
                         color={"#5A606F"}
+                        flexBasis={"auto"}
+                        whiteSpace={{ xs: "normal", md: "nowrap" }}
                       >
                         Etat de l’habilitation :
                       </Typography>
                       <Typography
                         variant="subtitle2"
-                        flexGrow={1}
+                        flexBasis={"100%"}
                         color={"black"}
                         fontWeight={400}
                       >
@@ -147,20 +188,22 @@ export default function Partenaires({ partenaires = [] }) {
                   <ListItemText>
                     <Stack
                       flexDirection={{ xs: "column", md: "row" }}
-                      gap={{ xs: 1, md: 2 }}
-                      alignItems={{ xs: "flex-start", md: "flex-start" }}
+                      gap={{ xs: 0, md: 2 }}
+                      alignItems="flex-start"
                     >
                       <Typography
                         variant="caption"
                         fontSize={15}
                         fontWeight={400}
+                        flexBasis={"auto"}
+                        whiteSpace={{ xs: "normal", md: "nowrap" }}
                         color={"#5A606F"}
                       >
                         Date de dernière modification de l’habilitation :
                       </Typography>
                       <Typography
                         variant="subtitle2"
-                        flexGrow={1}
+                        flexBasis={"100%"}
                         color={"black"}
                         fontWeight={400}
                       >
@@ -172,8 +215,10 @@ export default function Partenaires({ partenaires = [] }) {
                   </ListItemText>
                 </ListItem>
               </List>
-              <Divider flexItem variant="fullWidth" />
-            </>
+              {index + 1 !== partenaires?.length && (
+                <Divider flexItem variant="fullWidth" />
+              )}
+            </Box>
           ))}
         </Stack>
       )}

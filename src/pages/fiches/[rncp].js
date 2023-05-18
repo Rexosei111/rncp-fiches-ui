@@ -1,7 +1,6 @@
 import DetailSkeleton from "@/components/components/details/skeleton";
 import Layout from "@/components/components/layout";
 import {
-  Box,
   Breadcrumbs,
   Container,
   Paper,
@@ -21,8 +20,6 @@ import Indexes from "@/components/components/details/indexes";
 import Infos from "@/components/components/details/infos";
 import Link from "next/link";
 import { Lato } from "next/font/google";
-import { clipText } from "@/components/utils";
-import { size } from "lodash";
 import Certificateurs from "@/components/components/details/certificateurs";
 import Partenaires from "@/components/components/details/partenaires";
 import CertDescription from "@/components/components/details/certDescription";

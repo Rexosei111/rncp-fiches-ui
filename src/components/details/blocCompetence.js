@@ -1,4 +1,4 @@
-import { Box, Divider, Paper, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { Poppins } from "next/font/google";
 import React from "react";
 
