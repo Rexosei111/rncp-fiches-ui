@@ -31,7 +31,7 @@ const LatoStyle = Lato({
   weight: ["100", "300", "400", "700"],
 });
 
-export default function FicheDetails({ numero_fiche }) {
+export default function FicheDetails() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [rncpData, setRncpData] = useState({});
@@ -253,12 +253,6 @@ export default function FicheDetails({ numero_fiche }) {
     </>
   );
 }
-
-FicheDetails.getInitialProps = async (context) => {
-  return {
-    numero_fiche: context.query.rncp,
-  };
-};
 
 FicheDetails.getLayout = function (page) {
   return <Layout>{page}</Layout>;
