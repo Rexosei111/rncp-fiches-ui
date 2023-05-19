@@ -66,10 +66,10 @@ export default function FicheDetails() {
         setLoading(false);
       }
     }
-    if (router.isReady) {
+    if (router.isReady && rncp !== "undefined") {
       fetchRncp();
     }
-  }, [router.isReady]);
+  }, [router.isReady, rncp]);
 
   const calculateFontSize = (text) => {
     const words = text.split(" ");
