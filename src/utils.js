@@ -34,3 +34,26 @@ export function removeNullValues(obj) {
   }
   return obj;
 }
+
+export function replaceWithNewlines(str) {
+  const regex = /(\. |\;|\-)/g;
+  return str.replace(regex, "\n");
+}
+
+export function splitString(str) {
+  const delimiters = [". ", ";", "-"];
+  let resultList = [str];
+
+  for (let i = 0; i < delimiters.length; i++) {
+    const delimiter = delimiters[i];
+    const tempList = [];
+
+    resultList.forEach((item) => {
+      tempList.push(...item.split(delimiter));
+    });
+
+    resultList = tempList;
+  }
+
+  return resultList.map((item) => item.trim()).filter((item) => item !== "");
+}
