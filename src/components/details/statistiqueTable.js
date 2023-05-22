@@ -82,25 +82,31 @@ export default function StatistiqueTable({ statistiques = [] }) {
         </TableHead>
         <TableBody>
           {statistiques.length > 0 &&
-            statistiques.map((row) => (
-              <StyledTableRow key={row.annee}>
-                <StyledTableCell component="th" scope="row" align="center">
-                  {row.annee}
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  {row.nombre_certifies}
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  {row.nombre_certifies_vae}
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  {row.taux_insertion_global_6}
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  {row.taux_insertion_metier_24}
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
+            statistiques
+              .sort((a, b) => {
+                const lastTwoA = parseInt(a.annee, 10);
+                const lastTwoB = parseInt(b.annee, 10);
+                return lastTwoA - lastTwoB;
+              })
+              .map((row, index) => (
+                <StyledTableRow key={index}>
+                  <StyledTableCell component="th" scope="row" align="center">
+                    {row.annee}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row.nombre_certifies}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row.nombre_certifies_vae}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row.taux_insertion_global_6}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row.taux_insertion_metier_24}
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
           {statistiques.length === 0 && (
             <StyledTableRow>
               <StyledTableCell colSpan={5} align="center">
