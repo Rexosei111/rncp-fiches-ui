@@ -22,9 +22,9 @@ const indexes = [
   { name: "Description de la certification", id: "certDescription" },
   { name: "Blocs de compétences", id: "blocCompetence" },
   { name: "Statistiques", id: "statistiques" },
-  { name: "Voies d'accès", id: "" },
+  { name: "Voies d'accès", id: "voices" },
   { name: "Admission", id: "" },
-  { name: "Cible professionnelle", id: "" },
+  { name: "Cible professionnelle", id: "cible-prof" },
 ];
 export default function Indexes() {
   return (

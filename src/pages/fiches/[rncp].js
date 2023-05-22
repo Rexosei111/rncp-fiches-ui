@@ -28,6 +28,8 @@ import BlocCompetence from "@/components/components/details/blocCompetence";
 import StatistiqueTable from "@/components/components/details/statistiqueTable";
 import Image from "next/image";
 import fiche404 from "../../../public/404.svg";
+import CibleProf from "@/components/components/details/cibleProf";
+import Voices from "@/components/components/details/voices";
 
 const LatoStyle = Lato({
   subsets: ["latin"],
@@ -58,7 +60,7 @@ export default function FicheDetails() {
         setRncpData(data);
       } catch (error) {
         if (isAxiosError(error)) {
-          if (error.response.status === 404) {
+          if (error?.response?.status === 404) {
             setNotFound(true);
           }
         }
@@ -288,12 +290,25 @@ export default function FicheDetails() {
           >
             <BlocCompetence code_blocs={rncpData?.blocs_competences} />
           </CardWrapper>
+          <CardWrapper title={"Voies d’accès"} width={"100%"} id={"voices"}>
+            <Voices fiche={rncpData} />
+          </CardWrapper>
           <CardWrapper
             title={"Statistiques"}
             width={"100%"}
             id={"statistiques"}
           >
             <StatistiqueTable statistiques={rncpData?.statistiques_promotion} />
+          </CardWrapper>
+          <CardWrapper
+            title={"Cible professionnelle"}
+            width={"100%"}
+            id={"cible-prof"}
+          >
+            <CibleProf
+              description={rncpData?.fiches_descriptions}
+              codes_rome={rncpData?.fiches_codes_rome}
+            />
           </CardWrapper>
         </Stack>
       </Container>
