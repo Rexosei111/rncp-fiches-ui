@@ -84,7 +84,6 @@ export default function StatistiqueTable({ statistiques = [] }) {
           {statistiques.length > 0 &&
             statistiques
               .sort((a, b) => {
-                console.log(a, b);
                 const lastTwoA = parseInt(a.annee, 10);
                 const lastTwoB = parseInt(b.annee, 10);
                 return lastTwoA - lastTwoB;
