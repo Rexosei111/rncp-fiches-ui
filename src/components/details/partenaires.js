@@ -97,39 +97,7 @@ export default function Partenaires({ partenaires = [] }) {
                     </Stack>
                   </ListItemText>
                 </ListItem>
-                {fiche_partenaire.organisme.nom_organisme_fichier_qualiopi && (
-                  <ListItem disableGutters disablePadding>
-                    <ListItemText>
-                      <Stack
-                        flexDirection={{ xs: "column", md: "row" }}
-                        gap={{ xs: 0, md: 2 }}
-                        alignItems="flex-start"
-                      >
-                        <Typography
-                          variant="caption"
-                          fontSize={15}
-                          fontWeight={400}
-                          color={"#5A606F"}
-                          flexBasis={"auto"}
-                          whiteSpace={{ xs: "normal", md: "nowrap" }}
-                        >
-                          Fichier qualiopi :
-                        </Typography>
-                        <Typography
-                          variant="subtitle2"
-                          flexBasis={"100%"}
-                          color={"black"}
-                          fontWeight={400}
-                        >
-                          {
-                            fiche_partenaire.organisme
-                              .nom_organisme_fichier_qualiopi
-                          }
-                        </Typography>
-                      </Stack>
-                    </ListItemText>
-                  </ListItem>
-                )}
+
                 <ListItem disablePadding>
                   <ListItemText>
                     <Stack
