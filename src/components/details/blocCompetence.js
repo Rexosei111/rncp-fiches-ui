@@ -1,3 +1,4 @@
+import { replaceWithNewlines, splitString } from "@/components/utils";
 import { Box, Stack, Typography } from "@mui/material";
 import { Poppins } from "next/font/google";
 import React from "react";
@@ -8,8 +9,8 @@ const popins = Poppins({
 });
 
 const names = {
-  liste_competences: "Liste Compétence",
-  modalites_evaluation: "Modalités évaluation",
+  liste_competences: "Liste de compétences",
+  modalites_evaluation: "Modalités d'évaluation",
 };
 export default function BlocCompetence({ code_blocs = [] }) {
   return (
@@ -28,48 +29,59 @@ export default function BlocCompetence({ code_blocs = [] }) {
         width={"100%"}
         fontFamily={popins.style.fontFamily}
       >
-        {code_blocs.map((code_bloc, index) => (
-          <Box key={index}>
-            <Typography
-              variant="subtitle2"
-              gutterBottom
-              fontSize={15}
-              fontWeight={700}
-              color={"#000000"}
-              textAlign={"center"}
-            >
-              {code_bloc.code_bloc} - {code_bloc.libelle}
-            </Typography>
-            <Stack flexDirection={{ xs: "column" }} gap={{ xs: 1, md: 2 }}>
-              {Object.entries(code_bloc)
-                .filter(
-                  ([key, value]) =>
-                    Object.keys(names).includes(key) && value !== null
-                )
-                .map((entry, index) => (
-                  <Box key={index}>
-                    <Typography
-                      fontWeight={700}
-                      gutterBottom
-                      fontSize={15}
-                      fontStyle={"italic"}
-                      color={"#C7C6C6"}
-                    >
-                      {names[entry[0]]}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      fontWeight={400}
-                      color={"#000000"}
-                      lineHeight={2}
-                    >
-                      {entry[1]}
-                    </Typography>
-                  </Box>
-                ))}
-            </Stack>
-          </Box>
-        ))}
+        {code_blocs
+          .sort((a, b) => {
+            const lastTwoA = parseInt(a.code_bloc.slice(-2), 10);
+            const lastTwoB = parseInt(b.code_bloc.slice(-2), 10);
+            return lastTwoA - lastTwoB;
+          })
+          .map((code_bloc, index) => (
+            <Box key={index}>
+              <Typography
+                variant="subtitle2"
+                gutterBottom
+                fontSize={15}
+                fontWeight={700}
+                color={"#000000"}
+                textAlign={"center"}
+              >
+                {code_bloc.code_bloc} - {code_bloc.libelle}
+              </Typography>
+              <Stack flexDirection={{ xs: "column" }} gap={{ xs: 1, md: 2 }}>
+                {Object.entries(code_bloc)
+                  .filter(
+                    ([key, value]) =>
+                      Object.keys(names).includes(key) && value !== null
+                  )
+                  .map((entry, index) => (
+                    <Box key={index}>
+                      <Typography
+                        fontWeight={700}
+                        gutterBottom
+                        fontSize={15}
+                        fontStyle={"italic"}
+                        color={"#C7C6C6"}
+                      >
+                        {names[entry[0]]}
+                      </Typography>
+                      {splitString(entry[1]).map((item, index) => (
+                        <Typography
+                          key={index}
+                          variant="body2"
+                          fontWeight={400}
+                          color={"#000000"}
+                          noWrap={false}
+                          lineHeight={2}
+                          // whiteSpace={"pre-wrap"}
+                        >
+                          {item}
+                        </Typography>
+                      ))}
+                    </Box>
+                  ))}
+              </Stack>
+            </Box>
+          ))}
       </Stack>
     </>
   );
