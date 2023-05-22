@@ -24,10 +24,10 @@ import Logo from "./logo";
 
 const drawerWidth = 240;
 const navItems = [
+  { name: "Rechercher", url: "/" },
   { name: "API", url: "/documentation" },
   { name: "Export", url: "#" },
-  { name: "Nous contacter", url: "#" },
-  { name: "Rechercher", url: "#" },
+  { name: "Contact", url: "#" },
 ];
 
 function DrawerAppBar(props) {
@@ -132,7 +132,7 @@ function DrawerAppBar(props) {
             <MenuIcon />
           </IconButton>
           <Logo />
-          <Box sx={{ display: { xs: "none", sm: "block" }, mr: 2 }}>
+          <Box sx={{ display: { xs: "none", sm: "block" }, mr: 2, ml: "auto" }}>
             {navItems.map((item) => (
               <Button
                 key={item.name}

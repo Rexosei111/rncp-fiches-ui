@@ -3,12 +3,12 @@ import React from "react";
 import DrawerAppBar from "./topBar";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Footer from "./footer";
 
 const footerContent = [
-  { name: "FAQ", url: "#" },
-  { name: "À propos", url: "#" },
+  { name: "À propos", url: "/contact" },
+  { name: "Contact", url: "/contact" },
   { name: "Mentions légales", url: "#" },
-  { name: "Contact", url: "#" },
 ];
 export default function Layout({ children }) {
   const router = useRouter();
@@ -33,35 +33,7 @@ export default function Layout({ children }) {
       >
         {children}
       </Paper>
-      <Stack
-        component={"footer"}
-        flexDirection={"row"}
-        alignItems={"center"}
-        justifyContent={"center"}
-        gap={2}
-        minHeight={"10vh"}
-        flexWrap={"wrap"}
-        color={"white"}
-        bgcolor={(theme) => theme.palette.primary.main}
-      >
-        {footerContent.map((item, index) => (
-          <Button
-            key={index}
-            variant="text"
-            disableElevation
-            disableFocusRipple
-            disableRipple
-            component={Link}
-            href={item.url}
-            sx={{
-              color: "white",
-              textTransform: "capitalize",
-            }}
-          >
-            {item.name}
-          </Button>
-        ))}
-      </Stack>
+      <Footer />
     </Stack>
   );
 }

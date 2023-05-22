@@ -1,4 +1,5 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -8,7 +9,7 @@ export default function Logo() {
       component={Link}
       href="/"
       sx={{
-        flexGrow: 1,
+        // flexGrow: 1,
         display: {
           textDecoration: "none",
           fontWeight: 600,
@@ -16,27 +17,21 @@ export default function Logo() {
         },
       }}
     >
-      <Box width={"5%"} bgcolor={"#FF8300"} p={1} component="span">
+      <Stack gap={0.5} flexDirection={"row"} alignItems={"center"}>
+        <Image
+          src="/favicon_io/android-chrome-192x192.png"
+          width={40}
+          height={50}
+        />
         <Typography
-          variant="h4"
+          variant="h6"
           fontWeight={700}
-          color={"white"}
-          textAlign={"center"}
-          component={"span"}
-          textTransform={"uppercase"}
+          component="span"
+          color={"#000000"}
         >
-          F
+          ormadata
         </Typography>
-      </Box>
-      <Typography
-        variant="h6"
-        fontWeight={700}
-        component="span"
-        ml={0.5}
-        color={"#000000"}
-      >
-        ormadata
-      </Typography>
+      </Stack>
     </Box>
   );
 }
