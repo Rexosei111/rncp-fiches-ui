@@ -41,32 +41,6 @@ export default function Footer() {
           </Link>
         ))}
       </Stack>
-      <Stack
-        flexDirection={"column"}
-        gap={0}
-        justifyContent={"flex-start"}
-        alignItems={"flex-start"}
-        maxWidth={270}
-      >
-        <Typography
-          variant="caption"
-          fontSize={15}
-          gutterBottom
-          fontWeight={700}
-        >
-          Mentions Légales
-        </Typography>
-        <Typography variant="subtitle2">
-          Ce service vous est proposé par la société Albatros, SASU immatriculée
-          au RCS de PARIS sous le numéro 901884890.
-        </Typography>
-        <Typography variant="subtitle2">Bureau 562</Typography>
-        <Typography variant="subtitle2">59, rue de Ponthieu</Typography>
-        <Typography variant="subtitle2">75008 Paris</Typography>
-        <Typography variant="subtitle2">
-          Contact : alexis.dana@formadata.fr
-        </Typography>
-      </Stack>
     </Stack>
   );
 }
