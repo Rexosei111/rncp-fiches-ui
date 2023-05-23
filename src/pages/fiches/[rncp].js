@@ -1,9 +1,11 @@
 import DetailSkeleton from "@/components/components/details/skeleton";
 import Layout from "@/components/components/layout";
 import {
+  Alert,
   Breadcrumbs,
   Container,
   Paper,
+  Snackbar,
   Stack,
   Tooltip,
   Typography,
@@ -44,6 +46,8 @@ export default function FicheDetails() {
   const [notFound, setNotFound] = useState(false);
   const small = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const xsmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const [open, setOpen] = useState(false);
+  const [network_error, setNetwork_error] = useState(false);
 
   const { rncp } = router.query;
   useEffect(() => {
@@ -58,10 +62,17 @@ export default function FicheDetails() {
         );
         setLoading(false);
         setRncpData(data);
+        setNetwork_error(false);
       } catch (error) {
         if (isAxiosError(error)) {
           if (error?.response?.status === 404) {
             setNotFound(true);
+            setNetwork_error(false);
+            setOpen(false);
+          }
+          if (error?.code === "ERR_NETWORK") {
+            setOpen(true);
+            setNetwork_error(true);
           }
         }
         console.log(error);
@@ -96,8 +107,31 @@ export default function FicheDetails() {
       date_limite_delivrance: rncpData?.date_limite_delivrance,
     });
   }, [rncpData]);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   if (loading) {
     return <DetailSkeleton />;
+  }
+
+  if (network_error) {
+    return (
+      <>
+        <Snackbar
+          open={open}
+          autoHideDuration={10000}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          // action={action}
+        >
+          <Alert severity="error" variant="filled" sx={{ width: "100%" }}>
+            Please check your internet connection and refresh this page!
+          </Alert>
+        </Snackbar>
+        <DetailSkeleton />
+      </>
+    );
   }
 
   if (notFound) {
