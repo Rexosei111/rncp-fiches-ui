@@ -32,7 +32,7 @@ export default function MyDocument(props) {
           sizes="16x16"
           href="/favicon_io/favicon-16x16.png"
         />
-        <link rel="manifest" href="/site.webmanifest"></link>
+        <link rel="manifest" href="/favicon_io/site.webmanifest"></link>
         {emotionStyleTags}
       </Head>
       <body>

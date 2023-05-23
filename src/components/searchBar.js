@@ -40,6 +40,7 @@ export default function SearchBar() {
   const router = useRouter();
   const [rncps, setRncps] = useState([]);
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleChange = debounce(async (event) => {
     try {
@@ -64,14 +65,27 @@ export default function SearchBar() {
     const formData = new FormData(event.target);
     if (!formData.get("search")) {
       setError(true);
+      setErrorMessage("Please select a valid numero fiche");
+      return null;
+    }
+    if (!rncps.includes(formData.get("search"))) {
+      setError(true);
+      setErrorMessage("Please select a valid numero fiche");
       return null;
     }
     router.push("/fiches/" + formData.get("search"));
+  };
+
+  const handleInputChange = (event, value) => {
+    if (rncps.includes(value)) {
+      setError(false);
+    }
   };
   return (
     <Autocomplete
       freeSolo
       options={rncps}
+      onInputChange={handleInputChange}
       filterOptions={(x) => x}
       renderInput={(params) => (
         <Stack
@@ -81,7 +95,6 @@ export default function SearchBar() {
           onSubmit={handleSubmit}
           action="#"
           flexDirection={"column"}
-          // alignItems={"center"}
           gap={1}
           sx={{ width: { xs: 270, sm: 320, md: 400, lg: 550 } }}
         >
@@ -101,7 +114,7 @@ export default function SearchBar() {
               placeholder="Rechercher par numéro RNCP, RS, OF..."
               InputProps={{
                 ...params.InputProps,
-                type: "search",
+                type: "text",
                 startAdornment: (
                   <InputAdornment position="start">
                     <SearchIcon />
@@ -130,7 +143,7 @@ export default function SearchBar() {
             sx={{ color: "red" }}
             disabled={error ? false : true}
           >
-            {error ? "This field should not be empty" : null}
+            {error ? errorMessage : null}
           </InputLabel>
         </Stack>
       )}

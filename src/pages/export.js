@@ -48,7 +48,13 @@ export default function Export() {
             height={{ xs: 0, sm: "50vh" }}
             position="relative"
           >
-            <Image src={exportImg} fill style={{ objectFit: "contain" }} />
+            <Image
+              src={exportImg}
+              priority
+              alt="export image"
+              fill
+              style={{ objectFit: "contain" }}
+            />
           </Box>
         </Stack>
       </Container>

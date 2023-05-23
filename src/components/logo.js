@@ -21,6 +21,8 @@ export default function Logo() {
         <Image
           src="/favicon_io/android-chrome-192x192.png"
           width={40}
+          alt="logo"
+          priority
           height={50}
         />
         <Typography
