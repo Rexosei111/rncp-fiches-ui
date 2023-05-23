@@ -17,7 +17,6 @@ export default function Footer() {
       p={2}
       gap={3}
       minHeight={"10vh"}
-      //   flexWrap={{ xs: "wrap", md: "nowrap" }}
       color={"white"}
       bgcolor={(theme) => theme.palette.primary.main}
     >
