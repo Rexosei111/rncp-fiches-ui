@@ -5,6 +5,7 @@ import React from "react";
 const footerContent = [
   { name: "À propos", url: "/contact" },
   { name: "Contact", url: "/contact" },
+  { name: "Mentions légales", url: "/mentions" },
 ];
 
 export default function Footer() {
