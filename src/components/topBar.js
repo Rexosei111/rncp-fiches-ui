@@ -26,8 +26,8 @@ const drawerWidth = 240;
 const navItems = [
   { name: "Rechercher", url: "/" },
   { name: "API", url: "/documentation" },
-  { name: "Export", url: "#" },
-  { name: "Contact", url: "#" },
+  { name: "Export", url: "/export" },
+  { name: "Contact", url: "/contact" },
 ];
 
 function DrawerAppBar(props) {
