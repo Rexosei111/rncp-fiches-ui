@@ -69,6 +69,7 @@ export default function FicheDetails() {
       }
     }
     if (router.isReady && rncp !== "undefined") {
+      setNotFound(false);
       fetchRncp();
     }
   }, [router.isReady, rncp]);
