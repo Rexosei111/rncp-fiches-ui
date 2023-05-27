@@ -40,34 +40,6 @@ export default function Certificateurs({ certificateurs = [] }) {
           {certificateurs?.map((fiche_certificateur, index) => (
             <Box key={index}>
               <List elevation={0} disablePadding dense>
-                <ListItem disableGutters disablePadding>
-                  <ListItemText>
-                    <Stack
-                      flexDirection={{ xs: "column", md: "row" }}
-                      gap={{ xs: 0, md: 2 }}
-                      alignItems="flex-start"
-                    >
-                      <Typography
-                        variant="caption"
-                        fontSize={15}
-                        fontWeight={400}
-                        color={"#5A606F"}
-                        flexBasis={"auto"}
-                        whiteSpace={{ xs: "normal", md: "nowrap" }}
-                      >
-                        Siret :
-                      </Typography>
-                      <Typography
-                        variant="subtitle2"
-                        flexBasis={"100%"}
-                        color={"black"}
-                        fontWeight={400}
-                      >
-                        {fiche_certificateur.organisme.siret_organisme}
-                      </Typography>
-                    </Stack>
-                  </ListItemText>
-                </ListItem>
                 {fiche_certificateur.organisme.nom_organisme && (
                   <ListItem disableGutters disablePadding>
                     <ListItemText>
@@ -99,6 +71,34 @@ export default function Certificateurs({ certificateurs = [] }) {
                   </ListItem>
                 )}
 
+                <ListItem disableGutters disablePadding>
+                  <ListItemText>
+                    <Stack
+                      flexDirection={{ xs: "column", md: "row" }}
+                      gap={{ xs: 0, md: 2 }}
+                      alignItems="flex-start"
+                    >
+                      <Typography
+                        variant="caption"
+                        fontSize={15}
+                        fontWeight={400}
+                        color={"#5A606F"}
+                        flexBasis={"auto"}
+                        whiteSpace={{ xs: "normal", md: "nowrap" }}
+                      >
+                        Siret :
+                      </Typography>
+                      <Typography
+                        variant="subtitle2"
+                        flexBasis={"100%"}
+                        color={"black"}
+                        fontWeight={400}
+                      >
+                        {fiche_certificateur.organisme.siret_organisme}
+                      </Typography>
+                    </Stack>
+                  </ListItemText>
+                </ListItem>
                 <ListItem disablePadding>
                   <ListItemText>
                     <Stack
