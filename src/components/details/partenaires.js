@@ -69,34 +69,38 @@ export default function Partenaires({ partenaires = [] }) {
                     </Stack>
                   </ListItemText>
                 </ListItem>
-                <ListItem disableGutters disablePadding>
-                  <ListItemText>
-                    <Stack
-                      flexDirection={{ xs: "column", md: "row" }}
-                      gap={{ xs: 0, md: 2 }}
-                      alignItems="flex-start"
-                    >
-                      <Typography
-                        variant="caption"
-                        fontSize={15}
-                        fontWeight={400}
-                        color={"#5A606F"}
-                        flexBasis={"auto"}
-                        whiteSpace={{ xs: "normal", md: "nowrap" }}
+                {!fiche_certificateur.organisme.siret_organisme?.startsWith(
+                  "Inconnu"
+                ) && (
+                  <ListItem disableGutters disablePadding>
+                    <ListItemText>
+                      <Stack
+                        flexDirection={{ xs: "column", md: "row" }}
+                        gap={{ xs: 0, md: 2 }}
+                        alignItems="flex-start"
                       >
-                        Siret :
-                      </Typography>
-                      <Typography
-                        variant="subtitle2"
-                        flexBasis={"100%"}
-                        color={"black"}
-                        fontWeight={400}
-                      >
-                        {fiche_partenaire.organisme.siret_organisme}
-                      </Typography>
-                    </Stack>
-                  </ListItemText>
-                </ListItem>
+                        <Typography
+                          variant="caption"
+                          fontSize={15}
+                          fontWeight={400}
+                          color={"#5A606F"}
+                          flexBasis={"auto"}
+                          whiteSpace={{ xs: "normal", md: "nowrap" }}
+                        >
+                          Siret :
+                        </Typography>
+                        <Typography
+                          variant="subtitle2"
+                          flexBasis={"100%"}
+                          color={"black"}
+                          fontWeight={400}
+                        >
+                          {fiche_partenaire.organisme.siret_organisme}
+                        </Typography>
+                      </Stack>
+                    </ListItemText>
+                  </ListItem>
+                )}
 
                 <ListItem disablePadding>
                   <ListItemText>
