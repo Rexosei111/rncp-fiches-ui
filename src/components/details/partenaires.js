@@ -69,7 +69,7 @@ export default function Partenaires({ partenaires = [] }) {
                     </Stack>
                   </ListItemText>
                 </ListItem>
-                {!fiche_certificateur.organisme.siret_organisme?.startsWith(
+                {!fiche_partenaire.organisme.siret_organisme?.startsWith(
                   "Inconnu"
                 ) && (
                   <ListItem disableGutters disablePadding>
