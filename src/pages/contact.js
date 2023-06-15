@@ -16,11 +16,11 @@ export default function Contact() {
           minHeight={"50vh"}
         >
           <Typography variant="h5" gutterBottom textAlign={"center"}>
-            Replace the biggest text by : "Formadata est une société de conseil
-            dédiée à l'univers de la formation (formation initiale, formation
-            continue...) qui intervient pour le compte d'un large panel de
-            clients : établissements d'enseignement supérieur publics,
-            organismes de formations privés, administrations...
+            Formadata est une société de conseil dédiée à l'univers de la
+            formation (formation initiale, formation continue...) qui intervient
+            pour le compte d'un large panel de clients : établissements
+            d'enseignement supérieur publics, organismes de formations privés,
+            administrations...
           </Typography>
           <Typography variant="subtitle2" fontSize={16}>
             Vous avez des questions ? Un projet ?
