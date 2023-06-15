@@ -59,6 +59,12 @@ function DrawerAppBar(props) {
     router.reload();
   };
 
+  const handleSignout = () => {
+    signOut({
+      redirect: false,
+    });
+    router.push("/login");
+  };
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Logo />
@@ -101,7 +107,7 @@ function DrawerAppBar(props) {
             variant="contained"
             startIcon={<LogoutIcon />}
             sx={{ mt: 2 }}
-            onClick={() => signOut()}
+            onClick={handleSignout}
           >
             Logout
           </Button>
@@ -270,7 +276,7 @@ function DrawerAppBar(props) {
             variant="contained"
             startIcon={<LogoutIcon />}
             sx={{ mt: 2 }}
-            onClick={() => signOut()}
+            onClick={handleSignout}
           >
             Logout
           </Button>
