@@ -31,7 +31,7 @@ export default function Export() {
               complémentaires ?
             </Typography>
             <Typography variant="subtitle2" fontSize={15}>
-              Notre équipe d'analyste peut vous accompagner.
+              Notre équipe d'analystes peut vous accompagner.
             </Typography>
             <Button
               variant="outlined"

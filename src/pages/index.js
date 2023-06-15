@@ -10,7 +10,7 @@ export default function Index() {
   return (
     <>
       <Head>
-        <title>RNCP Fiches | Search</title>
+        <title>Formadata</title>
       </Head>
       <Container
         maxWidth="md"
